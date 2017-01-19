@@ -1,0 +1,15 @@
+D:\Git\productat_csharp_sdk\ProductAISDK\bin\Debug\ProductAISDK.dll
+D:\Git\productat_csharp_sdk\ProductAISDK\bin\Debug\ProductAISDK.pdb
+D:\Git\productat_csharp_sdk\ProductAISDK\obj\Debug\ProductAISDK.csprojResolveAssemblyReference.cache
+D:\Git\productat_csharp_sdk\ProductAISDK\obj\Debug\ProductAISDK.dll
+D:\Git\productat_csharp_sdk\ProductAISDK\obj\Debug\ProductAISDK.pdb
+D:\Git\productai_csharp_sdk\ProductAISDK\bin\Debug\ProductAISDK.dll
+D:\Git\productai_csharp_sdk\ProductAISDK\bin\Debug\ProductAISDK.pdb
+D:\Git\productai_csharp_sdk\ProductAISDK\obj\Debug\ProductAISDK.dll
+D:\Git\productai_csharp_sdk\ProductAISDK\obj\Debug\ProductAISDK.pdb
+D:\Git\productai_csharp_sdk\ProductAISDK\obj\Debug\ProductAISDK.csprojResolveAssemblyReference.cache
+C:\Users\malongcz\Desktop\MyTest\ProductAISDK\bin\Debug\ProductAISDK.dll
+C:\Users\malongcz\Desktop\MyTest\ProductAISDK\bin\Debug\ProductAISDK.pdb
+C:\Users\malongcz\Desktop\MyTest\ProductAISDK\obj\Debug\ProductAISDK.csprojResolveAssemblyReference.cache
+C:\Users\malongcz\Desktop\MyTest\ProductAISDK\obj\Debug\ProductAISDK.dll
+C:\Users\malongcz\Desktop\MyTest\ProductAISDK\obj\Debug\ProductAISDK.pdb

@@ -1,0 +1,4 @@
+D:\Git\productat_csharp_sdk\ProductAISDK\obj\Release 4.0\ProductAISDK.csprojResolveAssemblyReference.cache
+D:\Git\productat_csharp_sdk\ProductAISDK\bin\Release\net40\ProductAISDK.dll
+D:\Git\productat_csharp_sdk\ProductAISDK\obj\Release 4.0\ProductAISDK.dll
+D:\Git\productat_csharp_sdk\ProductAISDK\bin\Release\net40\ProductAISDK.dll.config

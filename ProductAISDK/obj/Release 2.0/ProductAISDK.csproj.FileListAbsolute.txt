@@ -1,0 +1,1 @@
+D:\Git\productat_csharp_sdk\ProductAISDK\obj\Release 2.0\ProductAISDK.csprojResolveAssemblyReference.cache

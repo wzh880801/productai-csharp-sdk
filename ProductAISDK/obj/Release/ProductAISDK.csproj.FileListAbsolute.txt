@@ -1,0 +1,8 @@
+D:\Git\productat_csharp_sdk\ProductAISDK\bin\Release\ProductAISDK.dll
+D:\Git\productat_csharp_sdk\ProductAISDK\bin\Release\ProductAISDK.pdb
+D:\Git\productat_csharp_sdk\ProductAISDK\obj\Release\ProductAISDK.dll
+D:\Git\productat_csharp_sdk\ProductAISDK\obj\Release\ProductAISDK.pdb
+D:\Git\productai_csharp_sdk\ProductAISDK\bin\Release\ProductAISDK.dll
+D:\Git\productai_csharp_sdk\ProductAISDK\bin\Release\ProductAISDK.pdb
+D:\Git\productai_csharp_sdk\ProductAISDK\obj\Release\ProductAISDK.dll
+D:\Git\productai_csharp_sdk\ProductAISDK\obj\Release\ProductAISDK.pdb
