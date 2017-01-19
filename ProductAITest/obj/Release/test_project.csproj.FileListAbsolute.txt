@@ -1,0 +1,1 @@
+D:\Git\productat_csharp_sdk\test_project\bin\Release\productat_csharp_sdk.exe.config
