@@ -1,19 +1,22 @@
 # productar-csharp-sdk
 
 # 安装
+Nuget关键字:
+ProductAI,Malong
+Nuget命令行
 Install-Package MalongTech.ProductAI.API 
 
 # 快速入门
 
 ## Setup your account
 ```csharp
-        static string accessKeyId = "your access key id";                        //require: 你的用户配置access_key_id
-        static string secretKey =  "your secret key";                            //require: 你的用户配置secret_key 
-        static ProductAIService api =
-                new ProductAIService(
-                    accessKeyId,                                                 //require: 你的用户配置access_key_id
-                    secretKey                                                    //require: 你的用户配置secret_key
-                    );        
+	 string accessKeyId = "your access key id";                        //require: 你的用户配置access_key_id
+	 string secretKey =  "your secret key";                            //require: 你的用户配置secret_key 
+	 ProductAIService api =
+	    new ProductAIService(
+	        accessKeyId,                                                 
+	        secretKey                                                    
+	        );        
 ```
 
 ## Search image using image file path
