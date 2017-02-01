@@ -7,6 +7,9 @@ using System.Security.Cryptography;
 using System.Text;
 
 using ParaPair = System.Collections.Generic.Dictionary<string, string>;
+
+
+//TODO 所有的Init函数的名字需要修改
 namespace ProductAI.API {
     public class ProductAIService {
         public class ProductAIAsyncResult {
@@ -51,7 +54,6 @@ namespace ProductAI.API {
             HttpWebRequest wr = submitFileToSearchInitClient(serviceType, serviceID, fileBytes, options, method);
             return requestAsync(wr, callBack);
         }
-
         /// <summary>
         /// request async,use local file to experience productAI search service
         /// </summary>
@@ -99,9 +101,28 @@ namespace ProductAI.API {
             byte[] fileBytes, ParaPair options, out string reponseRes ,string method = "POST") {
             HttpWebRequest wr = submitFileToSearchInitClient(serviceType, serviceID, fileBytes, options, method);
             return request(wr, out reponseRes);
-            
         }
 
+        public HttpForm initForm(Dictionary<string, string> fields, byte[] fileBytes) {
+            HttpForm form = new HttpForm();
+            foreach (var item in fields) {
+                form.AddField(item.Key, item.Value);
+            }
+            form.AddBinary("search", fileBytes, "", "image/jpegcv");
+            return form;
+        }
+
+        public HttpWebRequest initFileRequest(string serviceType, string serviceID,
+            byte[] fileBytes, ParaPair options) {
+            if (string.IsNullOrEmpty(serviceType) || string.IsNullOrEmpty(serviceID)) {
+                throw new Exception("Parameter Error!check your  serviceType and serviceID input");
+            }
+            string url = urlSearch(serviceType, serviceID);
+            string fileMD5 = getFileMd5(fileBytes);
+            HttpWebRequest wr = configureWebClient(url, options,"POST");
+            wr.Headers["x-ca-file-md5"] = fileMD5;
+            return wr;
+        }
         /// <summary>
         /// request async , use image url to experience productAI search service
         /// </summary>
@@ -351,7 +372,7 @@ namespace ProductAI.API {
         protected byte[] getFileBytes(string filePath) {
             byte[] bytes = null;
             if (!File.Exists(filePath)) {
-                throw new Exception("文件：" + filePath + "不存在");
+                throw new Exception("File：" + filePath + "Not Exist!");
             }
             using (FileStream fsSource = new FileStream(filePath,
             FileMode.Open, FileAccess.Read)) {
@@ -368,6 +389,22 @@ namespace ProductAI.API {
             }
             return bytes;
         }
+        protected bool PostForm(HttpWebRequest wr, IForms form,out string respContent) {
+            bool isErr = false;
+            wr.ContentType = form.ContentType;
+            try {
+                using (Stream stream = wr.GetRequestStream()) {
+                    byte[] formData = form.GetData();
+                    stream.Write(formData, 0, formData.Length);
+                }
+            } catch (WebException wex) {
+                isErr = true;
+                respContent = wex.ToString();//直接返回错误的结果
+                return isErr;
+            }
+            return GetRespRes(wr,out respContent);
+        }
+
         protected void Post(HttpWebRequest wr, byte[] file,
             ParaPair forms, string fileFormDataName, string fileContentType) {
             string boundary = ffBoundaryString + DateTime.Now.Ticks.ToString("x");
@@ -424,16 +461,12 @@ namespace ProductAI.API {
                     respContent = reader.ReadToEnd();
                 }
             } catch (WebException ex) {
-                System.Console.WriteLine(ex.Message);
-                WebResponse resErro = ex.Response;
-                using (Stream stream = resErro.GetResponseStream()) {
-                    StreamReader reader = new StreamReader(stream);
-                    respContent = reader.ReadToEnd();
-                }
+                respContent = ex.ToString();
                 isErro = true;
             }
             return isErro;
         }
+
         protected string urlSearch(string serviceType, string serviceId) {
             string url = ssfClientUrl + "/" + serviceType + "/" + serviceId + "/";
             return url;
@@ -501,9 +534,6 @@ namespace ProductAI.API {
             Post(wr, postForms);
             return wr;
         }
-
-
-
         protected HttpWebRequest imageSetControlByFileInitLocal(string imageSetId, string filePath,
             ParaPair options, string controlStr, string method = "POST") {
             string postUrl = urlImage(imageSetId);
@@ -512,8 +542,5 @@ namespace ProductAI.API {
             Post(wr, bytes, new ParaPair(), controlStr, "");
             return wr;
         }
-
-
-
     }
 }
