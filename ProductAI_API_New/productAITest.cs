@@ -10,7 +10,7 @@ namespace ProductAI.Test {
         static string serviceType ="detect_head";                                   //require: 你的服务类型
         static string serviveId = "_0000041";                                       //require: 你的服务ID
         
-        static string imageSetId = "your image set";                                //require: 你的数据集ID
+        static string imageSetId = "fx84jcav";                                //require: 你的数据集ID
 
         static ProductAIServiceAPI api =
                 new ProductAIServiceAPI(
@@ -87,7 +87,7 @@ namespace ProductAI.Test {
             }
             System.Console.WriteLine(respContent);
         }
-        
+
         //static void TestFileBytesSearchAsync() {
         //    string filePath = @".\test.jpg";
 
@@ -95,7 +95,7 @@ namespace ProductAI.Test {
         //    byte[] fileBytes = getFileBytes(filePath);
         //    options.Add("loc", "0-0-1-1");                                          //option: 图片标框的位置信息
         //    options.Add("count", "1");                                              //option: 设置总数限制
-            
+
         //    api.BeginSubmitFileToSearch(
         //        serviceType,                                                        //require: 你的服务类型
         //        serviveId,                                                          //require: 你的服务ID
@@ -104,30 +104,30 @@ namespace ProductAI.Test {
         //        RespCallback
         //        );
         //}
-        //static void TestFormSearch() {
-        //    string imageUrl = "http://spm-monitor.oss-cn-shanghai.aliyuncs.com/upload-img/services/__all__/2017-01-16/01ce7ac3eeaf6581a4a2429f8fde39837118f80d.jpg";
+        static void TestFormSearch() {
+            string imageUrl = "http://spm-monitor.oss-cn-shanghai.aliyuncs.com/upload-img/services/__all__/2017-01-16/01ce7ac3eeaf6581a4a2429f8fde39837118f80d.jpg";
 
-        //    Dictionary<string,string> options = new Dictionary<string, string>();
-        //    options.Add("loc", "0-0-1-1");                                          //option:  图片标框的位置信息
-            
-        //    bool isError = true;
-        //    string respContent = "";
+            Dictionary<string, string> options = new Dictionary<string, string>();
+            options.Add("loc", "0-0-1-1");                                          //option:  图片标框的位置信息
 
-        //    isError = api.SubmitFormToSearch(
-        //        serviceType,                                                        //require: 你的服务类型
-        //        serviveId,                                                          //require: 你的服务ID
-        //        imageUrl,                                                           //require: 你的图片链接
-        //        options,
-        //        out respContent
-        //        );
+            bool isError = true;
+            string respContent = "";
 
-        //    if (isError) {
-        //        System.Console.WriteLine("request failed!");
-        //    } else {
-        //        System.Console.WriteLine("request success!");
-        //    }
-        //    System.Console.WriteLine(respContent);
-        //}
+            isError = api.SubmitFormToSearch(
+                serviceType,                                                        //require: 你的服务类型
+                serviveId,                                                          //require: 你的服务ID
+                imageUrl,                                                           //require: 你的图片链接
+                options,
+                out respContent
+                );
+
+            if (isError) {
+                System.Console.WriteLine("request failed!");
+            } else {
+                System.Console.WriteLine("request success!");
+            }
+            System.Console.WriteLine(respContent);
+        }
 
         //static void TestFormSearchAsync() {
         //    string imageUrl = "http://spm-monitor.oss-cn-shanghai.aliyuncs.com/upload-img/services/__all__/2017-01-16/01ce7ac3eeaf6581a4a2429f8fde39837118f80d.jpg";
@@ -144,30 +144,30 @@ namespace ProductAI.Test {
         //        );
         //}
 
-        //static void TestAddImageToImageSet() {
-        //    string imageUrl = "http://spm-monitor.oss-cn-shanghai.aliyuncs.com/upload-img/services/__all__/2017-01-16/01ce7ac3eeaf6581a4a2429f8fde39837118f80d.jpg";
-            
-        //    Dictionary<string,string>  options = new Dictionary<string, string>();
-        //    options.Add("meta","My Test");                                          //option: 附加信息
+        static void TestAddImageToImageSet() {
+            string imageUrl = "http://spm-monitor.oss-cn-shanghai.aliyuncs.com/upload-img/services/__all__/2017-01-16/01ce7ac3eeaf6581a4a2429f8fde39837118f80d.jpg";
 
-        //    bool isError = true;
-        //    string respContent = "";
+            Dictionary<string, string> options = new Dictionary<string, string>();
+            options.Add("meta", "My Test");                                          //option: 附加信息
 
-        //    isError = api.AddImageToImageSet(
-        //        imageSetId,                                                         //require: 你的数据集ID
-        //        imageUrl,                                                           //require: 你的图片链接
-        //        options,
-        //        out respContent
-        //        );
+            bool isError = true;
+            string respContent = "";
 
-        //    if (isError) {
-        //        System.Console.WriteLine("request failed!");
-        //    } else {
-        //        System.Console.WriteLine("request success!");
-        //    }
-        //    System.Console.WriteLine(respContent);
+            isError = api.AddImageToImageSet(
+                imageSetId,                                                         //require: 你的数据集ID
+                imageUrl,                                                           //require: 你的图片链接
+                options,
+                out respContent
+                );
 
-        //}
+            if (isError) {
+                System.Console.WriteLine("request failed!");
+            } else {
+                System.Console.WriteLine("request success!");
+            }
+            System.Console.WriteLine(respContent);
+
+        }
 
         //static void TestAddImageToImageSetAsync() {
         //    string imageUrl = "http://spm-monitor.oss-cn-shanghai.aliyuncs.com/upload-img/services/__all__/2017-01-16/01ce7ac3eeaf6581a4a2429f8fde39837118f80d.jpg";
@@ -183,33 +183,33 @@ namespace ProductAI.Test {
         //        );
         //}
 
-        //static void TestAddImageByFile() {
-        //    string filePath = @".\example.csv";
-            
-        //    Dictionary<string ,string> options = new Dictionary<string, string>();
+        static void TestAddImageByFile() {
+            string filePath = @".\example.csv";
 
-        //    bool isError = true;
-        //    string respContent = "";
+            Dictionary<string, string> options = new Dictionary<string, string>();
 
-        //    isError = api.AddImageByFile(
-        //        imageSetId,                                                         //require: 你的数据集ID
-        //        filePath,                                                           //require: 你的CSV文件的路径
-        //        options,
-        //        out respContent
-        //        );
+            bool isError = true;
+            string respContent = "";
 
-        //    if (isError) {
-        //        System.Console.WriteLine("request failed!");
-        //    } else {
-        //        System.Console.WriteLine("request success!");
-        //    }
+            isError = api.AddImageByFile(
+                imageSetId,                                                         //require: 你的数据集ID
+                filePath,                                                           //require: 你的CSV文件的路径
+                options,
+                out respContent
+                );
 
-        //    System.Console.WriteLine(respContent);
-        //}
+            if (isError) {
+                System.Console.WriteLine("request failed!");
+            } else {
+                System.Console.WriteLine("request success!");
+            }
+
+            System.Console.WriteLine(respContent);
+        }
 
         //static void TestAddImageByFileAsync() {
         //    string filePath = @".\example.csv";
-            
+
         //    Dictionary<string ,string> options = new Dictionary<string, string>();
 
         //    api.BeginAddImageByFile(
@@ -220,32 +220,32 @@ namespace ProductAI.Test {
         //        );
         //}
 
-        //static void TestDeleteImageByFile() {
-        //    string filePath = @".\example.csv";
-            
-        //    Dictionary<string ,string> options = new Dictionary<string, string>();
+        static void TestDeleteImageByFile() {
+            string filePath = @".\example.csv";
 
-        //    bool isError = true;
-        //    string respContent = "";
+            Dictionary<string, string> options = new Dictionary<string, string>();
 
-        //    isError = api.DeleteImageByFile(
-        //        imageSetId,                                                         //require: 你的数据集ID
-        //        filePath,                                                           //require: 你的CSV文件的路径
-        //        options,
-        //        out respContent
-        //        );
+            bool isError = true;
+            string respContent = "";
 
-        //    if (isError) {
-        //        System.Console.WriteLine("request failed!");
-        //    } else {
-        //        System.Console.WriteLine("request success!");
-        //    }
-        //    System.Console.WriteLine(respContent);
-        //}
+            isError = api.DeleteImageByFile(
+                imageSetId,                                                         //require: 你的数据集ID
+                filePath,                                                           //require: 你的CSV文件的路径
+                options,
+                out respContent
+                );
+
+            if (isError) {
+                System.Console.WriteLine("request failed!");
+            } else {
+                System.Console.WriteLine("request success!");
+            }
+            System.Console.WriteLine(respContent);
+        }
 
         //static void TestDeleteImageByFileAsync() {
         //    string filePath = @".\example.csv";
-            
+
         //    Dictionary<string ,string> options = new Dictionary<string, string>();
 
         //    api.BeginDeleteImageByFile(
@@ -255,7 +255,7 @@ namespace ProductAI.Test {
         //        RespCallback                                                        //你的异步回调函数
         //        );                                              
         //}
-        
+
         //static void RespCallback(IAsyncResult result) {
         //    string respContent =  "";
         //    ProductAIService.ProductAIAsyncResult pAIRes=  
@@ -302,10 +302,10 @@ namespace ProductAI.Test {
 
             ////同步操作
             //TestFilePathSearch();
-            TestFileBytesSearch();
+            //TestFileBytesSearch();
             //TestFormSearch();
             //TestAddImageToImageSet();
-            //TestDeleteImageByFile();
+            TestDeleteImageByFile();
             //TestAddImageByFile();
             Console.ReadKey();
         }

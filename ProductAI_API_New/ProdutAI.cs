@@ -7,8 +7,8 @@ using System.Text;
 
 namespace ProductAI.API {
     class ProductAIServiceAPI {
-        //protected const string pAIUrl = "https://api.productai.cn";
-        protected const string pAIUrl = "http://api-test.productai.cn";
+        protected const string pAIUrl = "https://api.productai.cn";
+        //protected const string pAIUrl = "http://api-test.productai.cn";
         protected const string pAIVersion="1";
 
         protected string mAccessKeyId = "";
@@ -48,12 +48,61 @@ namespace ProductAI.API {
             form.AddBinary("search", fileBytes, "malongtest.jpg", "image/jpegcv");
             return post(wr,form,out reponseRes);
         }
+        public bool SubmitFormToSearch(string serviceType, string serviceID,
+            string PictureUrl,Dictionary<string,string> options,
+            out string respContent) {
+            string searchUrl = urlSearch(serviceType,serviceID);
+            Dictionary<string, string> parameters = new Dictionary<string, string>(options);
+            parameters.Add("url", PictureUrl);
+            HttpWebRequest wr = initeCommon(searchUrl, parameters);
+            UrlEncodeForm form =new UrlEncodeForm();
+            foreach (var param in parameters) {
+                form.AddField(param.Key,param.Value);
+            }
+            return post(wr, form,out respContent);
+        }
+        public bool AddImageToImageSet(string imageSetId, string imageUrl,
+            Dictionary<string,string> options,
+            out string respContent) {
+            string postUrl = urlImageSet(imageSetId);
+            Dictionary<string, string> parameters =
+                new Dictionary<string, string>(options);
+            parameters.Add("image_url",imageUrl);
+            HttpWebRequest wr = initeCommon(postUrl, parameters);
+            UrlEncodeForm form = new UrlEncodeForm();
+            foreach (var param in parameters) {
+                form.AddField(param.Key,param.Value);
+            }
+            return post(wr,form,out respContent);
+        }
+
+        public bool AddImageByFile(string imageSetId, string filePath,
+            Dictionary<string,string> options,
+            out string respContent) {
+            return ImageSetFileControl(imageSetId, filePath, "urls_to_add", options,out respContent);
+        }
+        public bool DeleteImageByFile(string imageSetId, string filePath,
+            Dictionary<string, string> options,
+            out string respContent) {
+            return ImageSetFileControl(imageSetId, filePath, "urls_to_delete", options, out respContent);
+        }
+        public bool ImageSetFileControl(
+            string imageSetId, string filePath,string ControlStr,
+            Dictionary<string, string> options,
+            out string respContent) {
+            string postUrl = urlImageSet(imageSetId);
+            HttpWebRequest wr = initeCommon(postUrl, null);
+            HttpForm form = new HttpForm();
+            byte[] bytes = getFileBytes(filePath);
+            form.AddBinary(ControlStr,bytes,"Imageset.csv");
+            return post(wr, form,out respContent);
+        }
+
         protected string urlSearch(string serviceType, string serviceId) {
             string url = pAIUrl + "/" + serviceType + "/" + serviceId + "/";
             return url;
         }
-
-        protected string urlImage(string ImageSetId) {
+        protected string urlImageSet(string ImageSetId) {
             string url = urlSearch(imageSetServiceType, imageSetServiceId);
             url += ImageSetId;
             return url;
@@ -112,8 +161,10 @@ namespace ProductAI.API {
         protected string serviceSignature(Dictionary<string, string> headers,
             Dictionary<string, string> parameters, string secretKey) {
             Dictionary<string, string> calcParams = checkNotExcluded(headers);
-            foreach (var param in parameters) {
-                calcParams.Add(param.Key, param.Value);
+            if (null != parameters) {
+                foreach (var param in parameters) {
+                    calcParams.Add(param.Key, param.Value);
+                }
             }
             SignatureBytes sb = new SignatureBytes();
             foreach (var param in calcParams) {
