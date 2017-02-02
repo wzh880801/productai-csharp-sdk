@@ -1,0 +1,7 @@
+D:\Git\public-sdk\productai-csharp-sdk\ProductAI_API_New\bin\Debug\ProductAI_API_New.exe
+D:\Git\public-sdk\productai-csharp-sdk\ProductAI_API_New\bin\Debug\ProductAI_API_New.pdb
+D:\Git\public-sdk\productai-csharp-sdk\ProductAI_API_New\bin\Debug\HttpWebClient.dll
+D:\Git\public-sdk\productai-csharp-sdk\ProductAI_API_New\bin\Debug\HttpWebClient.pdb
+D:\Git\public-sdk\productai-csharp-sdk\ProductAI_API_New\obj\Debug\ProductAI_API_New.csprojResolveAssemblyReference.cache
+D:\Git\public-sdk\productai-csharp-sdk\ProductAI_API_New\obj\Debug\ProductAI_API_New.exe
+D:\Git\public-sdk\productai-csharp-sdk\ProductAI_API_New\obj\Debug\ProductAI_API_New.pdb

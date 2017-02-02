@@ -7,7 +7,8 @@ using System.Text;
 
 namespace ProductAI.API {
     class ProductAIServiceAPI {
-        protected const string pAIUrl = "https://api.productai.cn";
+        //protected const string pAIUrl = "https://api.productai.cn";
+        protected const string pAIUrl = "http://api-test.productai.cn";
         protected const string pAIVersion="1";
 
         protected string mAccessKeyId = "";
@@ -36,15 +37,15 @@ namespace ProductAI.API {
             byte[] fileBytes, Dictionary<string,string> options,
             out string reponseRes) {
             string url = urlSearch(serviceType, serviceID);
-            HttpWebRequest wr = getInitedCommon(url,options);
+            HttpWebRequest wr = initeCommon(url,options);
 
             string fileMD5 = getFileMd5(fileBytes);
-            wr.Headers["x-ca-file-md5"] = fileMD5;
+            //wr.Headers["x-ca-file-md5"] = fileMD5;
             HttpForm form = new HttpForm();
             foreach (var param in options) {
                 form.AddField(param.Key,param.Value);
             }
-            form.AddBinary("search", fileBytes,"", "image/jpegcv");
+            form.AddBinary("search", fileBytes, "malongtest.jpg", "image/jpegcv");
             return post(wr,form,out reponseRes);
         }
         protected string urlSearch(string serviceType, string serviceId) {
@@ -60,10 +61,12 @@ namespace ProductAI.API {
 
         protected static string shortUuid() {
             return Guid.NewGuid().ToString("N");
+            //return "";
         }
         protected string getTimeStamp() {
             TimeSpan ts = DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, 0);
             return Convert.ToInt64(ts.TotalSeconds).ToString();
+            //return "1485992636";
         }
         protected Dictionary<string, string> serviceHeaders(string accessKeyId, string method = "POST") {
             string timeStamp = getTimeStamp();
@@ -123,20 +126,27 @@ namespace ProductAI.API {
         }
         protected bool GetRespResult(HttpWebRequest wr,out string respContent) {
             bool isErr = false;
-            WebResponse resp =  wr.GetResponse();
             try {
+                WebResponse resp = wr.GetResponse();
                 using (Stream stream = resp.GetResponseStream()) {
                     StreamReader reader = new StreamReader(stream);
                     respContent = reader.ReadToEnd();
                 }
             } catch(WebException ex) {
                 isErr = true;
-                respContent = ex.ToString();
+                respContent = ex.Message;
+                if (null != ex.Response) {
+                    Stream steam = ex.Response.GetResponseStream();
+                    StreamReader reader = new StreamReader(steam);
+                    string errResp = reader.ReadToEnd();
+                    respContent += "\r\n" + errResp;
+                }
             }
             return isErr;
         }
         protected bool writeForm(HttpWebRequest wr, IForms form, out string respContent) {
             bool isErr = false;
+            wr.ContentType = form.ContentType;
             try {
                 using (Stream stream = wr.GetRequestStream()) {
                     byte[] formData = form.GetData();
@@ -144,7 +154,7 @@ namespace ProductAI.API {
                 }
             }catch (WebException ex) {
                 isErr = true;
-                respContent = ex.ToString();
+                respContent = ex.Message;
                 return isErr;
             }
             respContent = "";
@@ -157,14 +167,12 @@ namespace ProductAI.API {
                 return GetRespResult(wr, out respContent);
             }     
         }
-
-        protected HttpWebRequest getInitedCommon(string url,
+        protected HttpWebRequest initeCommon(string url,
             Dictionary<string,string> parameters) {
-
             Dictionary<string, string> headers = serviceHeaders(mAccessKeyId);
             HttpWebRequest wr = (HttpWebRequest)WebRequest.Create(url);
             wr.Method = "POST";
-            wr.KeepAlive = false;
+            wr.KeepAlive = true;
             wr.Timeout = 20 * 1000;
             wr.Credentials = CredentialCache.DefaultCredentials;
 
