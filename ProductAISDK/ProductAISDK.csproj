@@ -38,14 +38,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Functions.cs" />
+    <Compile Include="HttpClient.cs" />
     <Compile Include="ProductAI.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\..\C#\MyHttpTest\HttpWebClient\HttpWebClient.csproj">
-      <Project>{bb759e24-c0c7-4ae5-8c27-0766c2704030}</Project>
-      <Name>HttpWebClient</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -16,3 +16,5 @@ C:\Users\malongcz\Desktop\MyTest\ProductAISDK\obj\Debug\ProductAISDK.pdb
 D:\Git\public-sdk\productai-csharp-sdk\ProductAISDK\obj\Debug\ProductAISDK.csprojResolveAssemblyReference.cache
 D:\Git\public-sdk\productai-csharp-sdk\ProductAISDK\obj\Debug\ProductAISDK.dll
 D:\Git\public-sdk\productai-csharp-sdk\ProductAISDK\obj\Debug\ProductAISDK.pdb
+D:\Git\public-sdk\productai-csharp-sdk\ProductAISDK\bin\Debug\ProductAISDK.dll
+D:\Git\public-sdk\productai-csharp-sdk\ProductAISDK\bin\Debug\ProductAISDK.pdb

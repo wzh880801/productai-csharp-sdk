@@ -30,3 +30,11 @@ D:\Git\productai-csharp-sdk\ProductAITest\bin\Debug\productat_csharp_sdk.exe
 D:\Git\productai-csharp-sdk\ProductAITest\bin\Debug\productat_csharp_sdk.pdb
 D:\Git\productai-csharp-sdk\ProductAITest\bin\Debug\ProductAISDK.dll
 D:\Git\productai-csharp-sdk\ProductAITest\obj\Debug\ProductARTest.csprojResolveAssemblyReference.cache
+D:\Git\public-sdk\productai-csharp-sdk\ProductAITest\bin\Debug\productat_csharp_sdk.exe.config
+D:\Git\public-sdk\productai-csharp-sdk\ProductAITest\obj\Debug\productat_csharp_sdk.exe
+D:\Git\public-sdk\productai-csharp-sdk\ProductAITest\obj\Debug\productat_csharp_sdk.pdb
+D:\Git\public-sdk\productai-csharp-sdk\ProductAITest\obj\Debug\ProductARTest.csprojResolveAssemblyReference.cache
+D:\Git\public-sdk\productai-csharp-sdk\ProductAITest\bin\Debug\productat_csharp_sdk.exe
+D:\Git\public-sdk\productai-csharp-sdk\ProductAITest\bin\Debug\productat_csharp_sdk.pdb
+D:\Git\public-sdk\productai-csharp-sdk\ProductAITest\bin\Debug\ProductAISDK.dll
+D:\Git\public-sdk\productai-csharp-sdk\ProductAITest\bin\Debug\ProductAISDK.pdb
