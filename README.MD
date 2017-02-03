@@ -3,6 +3,7 @@
 # 安装
 Nuget关键字:
 ProductAI,Malong
+
 Nuget命令行
 Install-Package MalongTech.ProductAI.API 
 
