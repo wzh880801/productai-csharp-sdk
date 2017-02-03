@@ -220,7 +220,7 @@ Install-Package MalongTech.ProductAI.API
             
         Dictionary<string ,string> options = new Dictionary<string, string>();
 
-        api.DeleteImageByFileAsync(
+        api.AddImageByFileAsync(
         imageSetId,                                                              //require: 你的数据集ID                                                    
         csvPath,                                                                 //require: 你的CSV文件的路径
         options,
@@ -258,7 +258,7 @@ Install-Package MalongTech.ProductAI.API
 
         Dictionary<string ,string> options = new Dictionary<string, string>();
 
-        api.BeginDeleteImageByFile(
+        api.DeleteImageByFileAsync(
         imageSetId,                                                              //require: 你的数据集ID                                                    
         csvPath,                                                                 //require: 你的CSV文件的路径
         options,
