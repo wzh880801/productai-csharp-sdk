@@ -302,11 +302,11 @@ namespace ProductAI.Test {
 
             ////同步操作
             //TestFilePathSearch();
-            //TestFileBytesSearch();
-            //TestFormSearch();
-            //TestAddImageToImageSet();
+            TestFileBytesSearch();
+            TestFormSearch();
+            TestAddImageToImageSet();
             TestDeleteImageByFile();
-            //TestAddImageByFile();
+            TestAddImageByFile();
             Console.ReadKey();
         }
 

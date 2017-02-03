@@ -35,18 +35,19 @@ namespace ProductAI.API {
         /// <returns>false request success,true request failed</returns>
         public bool SubmitFileToSearch(string serviceType, string serviceID,
             byte[] fileBytes, Dictionary<string,string> options,
-            out string reponseRes) {
+            out string respContent) {
             string url = urlSearch(serviceType, serviceID);
-            HttpWebRequest wr = initeCommon(url,options);
+            Dictionary<string,string> headers = getCommonHeader(options);
 
-            string fileMD5 = getFileMd5(fileBytes);
-            //wr.Headers["x-ca-file-md5"] = fileMD5;
             HttpForm form = new HttpForm();
             foreach (var param in options) {
                 form.AddField(param.Key,param.Value);
             }
             form.AddBinary("search", fileBytes, "malongtest.jpg", "image/jpegcv");
-            return post(wr,form,out reponseRes);
+            HttpPost hp = new HttpPost(url,headers,form);
+            hp.Post();
+            respContent = hp.ResultText;
+            return hp.IsError;
         }
         public bool SubmitFormToSearch(string serviceType, string serviceID,
             string PictureUrl,Dictionary<string,string> options,
@@ -54,13 +55,17 @@ namespace ProductAI.API {
             string searchUrl = urlSearch(serviceType,serviceID);
             Dictionary<string, string> parameters = new Dictionary<string, string>(options);
             parameters.Add("url", PictureUrl);
-            HttpWebRequest wr = initeCommon(searchUrl, parameters);
+            Dictionary<string,string> headers = getCommonHeader(parameters);
             UrlEncodeForm form =new UrlEncodeForm();
             foreach (var param in parameters) {
                 form.AddField(param.Key,param.Value);
             }
-            return post(wr, form,out respContent);
+            HttpPost hp = new HttpPost(searchUrl,headers,form);
+            hp.Post();
+            respContent = hp.ResultText;
+            return hp.IsError;
         }
+
         public bool AddImageToImageSet(string imageSetId, string imageUrl,
             Dictionary<string,string> options,
             out string respContent) {
@@ -68,12 +73,15 @@ namespace ProductAI.API {
             Dictionary<string, string> parameters =
                 new Dictionary<string, string>(options);
             parameters.Add("image_url",imageUrl);
-            HttpWebRequest wr = initeCommon(postUrl, parameters);
+            Dictionary<string,string> headers = getCommonHeader(parameters);
             UrlEncodeForm form = new UrlEncodeForm();
             foreach (var param in parameters) {
                 form.AddField(param.Key,param.Value);
             }
-            return post(wr,form,out respContent);
+            HttpPost hp = new HttpPost(postUrl, headers,form);
+            hp.Post();
+            respContent = hp.ResultText;
+            return hp.IsError;
         }
 
         public bool AddImageByFile(string imageSetId, string filePath,
@@ -91,11 +99,14 @@ namespace ProductAI.API {
             Dictionary<string, string> options,
             out string respContent) {
             string postUrl = urlImageSet(imageSetId);
-            HttpWebRequest wr = initeCommon(postUrl, null);
+            Dictionary<string,string> headers = getCommonHeader( null);
             HttpForm form = new HttpForm();
             byte[] bytes = getFileBytes(filePath);
             form.AddBinary(ControlStr,bytes,"Imageset.csv");
-            return post(wr, form,out respContent);
+            HttpPost hp = new HttpPost(postUrl,headers,form);
+            hp.Post();
+            respContent = hp.ResultText;
+            return hp.IsError;
         }
 
         protected string urlSearch(string serviceType, string serviceId) {
@@ -110,12 +121,10 @@ namespace ProductAI.API {
 
         protected static string shortUuid() {
             return Guid.NewGuid().ToString("N");
-            //return "";
         }
         protected string getTimeStamp() {
             TimeSpan ts = DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, 0);
             return Convert.ToInt64(ts.TotalSeconds).ToString();
-            //return "1485992636";
         }
         protected Dictionary<string, string> serviceHeaders(string accessKeyId, string method = "POST") {
             string timeStamp = getTimeStamp();
@@ -218,21 +227,11 @@ namespace ProductAI.API {
                 return GetRespResult(wr, out respContent);
             }     
         }
-        protected HttpWebRequest initeCommon(string url,
-            Dictionary<string,string> parameters) {
+        protected Dictionary<string,string> getCommonHeader(Dictionary<string,string> parameters) {
             Dictionary<string, string> headers = serviceHeaders(mAccessKeyId);
-            HttpWebRequest wr = (HttpWebRequest)WebRequest.Create(url);
-            wr.Method = "POST";
-            wr.KeepAlive = true;
-            wr.Timeout = 20 * 1000;
-            wr.Credentials = CredentialCache.DefaultCredentials;
-
             string signature = serviceSignature(checkNotExcluded( headers),parameters,mSecretKey);
             headers["x-ca-signature"] = signature;
-            foreach (var header in headers) {
-                wr.Headers.Add(header.Key,header.Value);
-            }
-            return wr;
+            return headers;
         }
         protected byte[] getFileBytes(string filePath) {
             byte[] bytes = null;
