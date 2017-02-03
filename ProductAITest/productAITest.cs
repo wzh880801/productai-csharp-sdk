@@ -255,13 +255,13 @@ namespace ProductAI.Test {
                 TestCallback                                                        //你的异步回调函数
                 );
         }
-        static protected void TestCallback(bool isErr, string res) {
+        static protected void TestCallback(bool isErr, string result) {
             if (isErr) {
                 System.Console.WriteLine("request failed!");
             } else {
                 System.Console.WriteLine("request success!");
             }
-            System.Console.WriteLine(res);
+            System.Console.WriteLine(result);
         }
 
         static void Main(string[] args) {

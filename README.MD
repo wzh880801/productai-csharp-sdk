@@ -55,12 +55,12 @@ Install-Package MalongTech.ProductAI.API
         options.Add("loc", "0-0-1-1");                                          //option: 图片标框的位置信息
         options.Add("count", "1");                                              //option: 设置总数限制
 
-        api.BeginSubmitFileToSearch(
+        api.SubmitFileToSearchAsync(
         serviceType,                                                            //require: 你的服务类型
         serviveId,                                                              //require: 你的服务ID
         imagePath,                                                              //require: 你的本地图片的路径
         options,
-        RespCallback                                                            //你的异步回调函数
+        TestCallback                                                            //你的异步回调函数
         );
 ```
 
@@ -98,12 +98,12 @@ Install-Package MalongTech.ProductAI.API
         options.Add("loc", "0-0-1-1");                                          //option: 图片标框的位置信息
         options.Add("count", "1");                                              //option: 设置总数限制
 
-        api.BeginSubmitFileToSearch(
+        api.SubmitFileToSearchAsync(
         serviceType,                                                            //require: 你的服务类型
         serviveId,                                                              //require: 你的服务ID
         fileBytes,                                                              //require: 你的本地图片二进制数据
         options,
-        RespCallback
+        TestCallback
         );
 ```
 
@@ -140,12 +140,12 @@ Install-Package MalongTech.ProductAI.API
         Dictionary<string,string> options = new Dictionary<string, string>();
         options.Add("loc", "0-0-1-1");                                          //option:  图片标框的位置信息                                                                              
 
-        api.BeginSubmitFormToSearch(
+        api.SubmitFormToSearchAsync(
         serviceType,                                                            //require: 你的服务类型
         serviveId,                                                              //require: 你的服务ID
         imageUrl,                                                               //require: 你的图片链接
         options,
-        RespCallback                                                            //你的异步回调函数
+        TestCallback                                                            //你的异步回调函数
         );
 ```
 
@@ -181,11 +181,11 @@ Install-Package MalongTech.ProductAI.API
         Dictionary<string,string>  options = new Dictionary<string, string>();
         options.Add("meta", "My Test");                                          //option: 附加信息 
 
-        api.BeginAddImageToImageSet(
+        api.AddImageToImageSetAsync(
         imageSetId,                                                              //require: 你的数据集ID
         imageUrl,                                                                //require: 你的图片链接
         options,
-        RespCallback                                                             //你的异步回调函数
+        TestCallback                                                             //你的异步回调函数
         );
 ```
 
@@ -220,11 +220,11 @@ Install-Package MalongTech.ProductAI.API
             
         Dictionary<string ,string> options = new Dictionary<string, string>();
 
-        api.BeginAddImageByFile(
+        api.DeleteImageByFileAsync(
         imageSetId,                                                              //require: 你的数据集ID                                                    
         csvPath,                                                                 //require: 你的CSV文件的路径
         options,
-        RespCallback                                                             //你的异步回调函数
+        TestCallback                                                             //你的异步回调函数
         );
 ```
 
@@ -268,20 +268,14 @@ Install-Package MalongTech.ProductAI.API
 
 ## request async callback function
 ```csharp
-        static void RespCallback(IAsyncResult result) {
-                string respContent =  "";
-                ProductAIService.ProductAIAsyncResult pAIRes=  
-                result.AsyncState as ProductAIService.ProductAIAsyncResult;
-                bool isError = pAIRes.APIInstance.EndRequest(pAIRes, out respContent);
-
-                if (isError) {
-                System.Console.WriteLine("request failed!");
-                } else {
-                System.Console.WriteLine("request success!");
-                }
-                System.Console.WriteLine(respContent);
-
-        }  
+	    static protected void TestCallback(bool isErr, string result) {
+	            if (isErr) {
+	                System.Console.WriteLine("request failed!");
+	            } else {
+	                System.Console.WriteLine("request success!");
+	            }
+	            System.Console.WriteLine(result);
+	  	}  
 ```
 
 
