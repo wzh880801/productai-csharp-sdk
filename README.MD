@@ -1,5 +1,274 @@
 # productar-csharp-sdk
 
+# Setup
+Nuget Keywords:
+ProductAI,Malong
+
+Nuget Cli:
+Install-Package MalongTech.ProductAI.API
+
+# QuickStart
+
+## Setup your account
+```csharp
+	 string accessKeyId = "your access key id";
+	 string secretKey =  "your secret key";
+	 ProductAIService api =
+	    new ProductAIService(
+	        accessKeyId,
+	        secretKey
+	        );
+```
+
+## Search image using image file path
+```csharp
+        string imagePath;
+
+        Dictionary<string,string> options = new Dictionary<string, string>();
+        options.Add("loc","0-0-1-1");                                           //option
+        options.Add("count","1");
+
+        bool isError = true;
+        string respContent = "";//option: 设置总数限制
+
+        isError =
+        api.SubmitFileToSearch(
+                serviceType,                                                    //require
+                serviveId,                                                      //require
+                imagePath,                                                      //require: location in local
+                options,
+                out respContent                                                 //api response
+                );
+
+        if (isError) {
+        System.Console.WriteLine("request failed!");
+        } else {
+        System.Console.WriteLine("request success!");
+        }
+```
+
+## Search image async using image file path
+```csharp
+
+        string imagePath ";
+
+        Dictionary<string,string> options = new Dictionary<string, string>();
+        options.Add("loc", "0-0-1-1");                                          //option
+        options.Add("count", "1");                                              //option: limit of max results
+
+        api.SubmitFileToSearchAsync(
+        serviceType,                                                            //require
+        serviveId,                                                              //require
+        imagePath,                                                              //require: location in local
+        options,
+        TestCallback                                                            //callback function
+        );
+```
+
+## Search image using image binary file
+```csharp
+        Dictionary<string,string> options = new Dictionary<string, string>();
+        byte[] fileBytes;
+        options.Add("loc", "0-0-1-1");                                          //option
+        options.Add("count", "1");                                              //option: limit of max results
+
+        bool isError = true;
+        string respContent = "";
+
+        isError =
+        api.SubmitFileToSearch(
+                serviceType,                                                    //require
+                serviveId,                                                      //require
+                fileBytes,                                                      //require: binary of image
+                options ,
+                out respContent
+                );
+
+        if (isError) {
+        System.Console.WriteLine("request failed!");
+        } else {
+        System.Console.WriteLine("request success!");
+        }
+        System.Console.WriteLine(respContent);
+```
+
+## Search image async using image binary file
+```csharp
+        Dictionary<string,string> options = new Dictionary<string, string>();
+        byte[] fileBytes;
+        options.Add("loc", "0-0-1-1");                                          //option
+        options.Add("count", "1");                                              //option: limit of max results
+
+        api.SubmitFileToSearchAsync(
+        serviceType,                                                            //require:
+        serviveId,                                                              //require:
+        fileBytes,                                                              //require: binary of image
+        options,
+        TestCallback
+        );
+```
+
+## Search image using image url
+```csharp
+        string imageUrl;
+
+        Dictionary<string,string> options = new Dictionary<string, string>();
+        options.Add("loc", "0-0-1-1");                                          //option
+
+        bool isError = true;
+        string respContent = "";
+
+        isError = api.SubmitFormToSearch(
+        serviceType,                                                           //require
+        serviveId,                                                             //require
+        imageUrl,                                                              //require: image url
+        options,
+        out respContent
+        );
+
+        if (isError) {
+        System.Console.WriteLine("request failed!");
+        } else {
+        System.Console.WriteLine("request success!");
+        }
+        System.Console.WriteLine(respContent);
+```
+
+## Search image async using image url
+```csharp
+        string imageUrl;
+
+        Dictionary<string,string> options = new Dictionary<string, string>();
+        options.Add("loc", "0-0-1-1");                                          //option
+
+        api.SubmitFormToSearchAsync(
+        serviceType,                                                            //require
+        serviveId,                                                              //require
+        imageUrl,                                                               //require: image url
+        options,
+        TestCallback                                                            //callback function
+        );
+```
+
+## Upload images to image set using url
+```csharp
+        string imageUrl;
+
+        Dictionary<string,string>  options = new Dictionary<string, string>();
+        options.Add("meta","My Test");                                          //option: additional information
+
+        bool isError = true;
+        string respContent = "";
+
+        isError = api.AddImageToImageSet(
+        imageSetId,                                                             //require: image set id
+        imageUrl,                                                               //require: image url
+        options,
+        out respContent
+        );
+
+        if (isError) {
+        System.Console.WriteLine("request failed!");
+        } else {
+        System.Console.WriteLine("request success!");
+        }
+        System.Console.WriteLine(respContent);
+```
+
+## Upload images to image set async using url
+```csharp
+        string imageUrl;
+
+        Dictionary<string,string>  options = new Dictionary<string, string>();
+        options.Add("meta", "My Test");                                          //option: additional information
+
+        api.AddImageToImageSetAsync(
+        imageSetId,                                                              //require: image set id
+        imageUrl,                                                                //require: image url
+        options,
+        TestCallback                                                             //callback function
+        );
+```
+
+## Upload images to image set using a csv file
+```csharp
+        string csvPath;
+
+        Dictionary<string ,string> options = new Dictionary<string, string>();
+
+        bool isError = true;
+        string respContent = "";
+
+        isError = api.AddImageByFile(
+        imageSetId,                                                              //require: image set id
+        csvPath,                                                                 //require: csv path
+        options,
+        out respContent
+        );
+
+        if (isError) {
+        System.Console.WriteLine("request failed!");
+        } else {
+        System.Console.WriteLine("request success!");
+        }
+
+        System.Console.WriteLine(respContent);
+```
+
+## Upload images to image set async using a csv file
+```csharp
+        string csvPath;
+
+        Dictionary<string ,string> options = new Dictionary<string, string>();
+
+        api.AddImageByFileAsync(
+        imageSetId,                                                              //require: image set id
+        csvPath,                                                                 //require: csv path
+        options,
+        TestCallback                                                             //callback function
+        );
+```
+
+## Remove images from image set using a csv file
+```csharp
+        string csvPath;
+
+        Dictionary<string ,string> options = new Dictionary<string, string>();
+
+        bool isError = true;
+        string respContent = "";
+
+        isError = api.DeleteImageByFile(
+        imageSetId,                                                              //require: image set id
+        csvPath,                                                                 //require: csv path
+        options,
+        out respContent
+        );
+
+        if (isError) {
+        System.Console.WriteLine("request failed!");
+        } else {
+        System.Console.WriteLine("request success!");
+        }
+        System.Console.WriteLine(respContent);
+```
+
+## Remove images from image set async using a csv file
+```csharp
+        string csvPath;
+
+        Dictionary<string ,string> options = new Dictionary<string, string>();
+
+        api.DeleteImageByFileAsync(
+        imageSetId,                                                              //require: images set id
+        csvPath,                                                                 //require: csv path
+        options,
+        RespCallback                                                             //callback function
+        );
+```
+
+#
+
 # 安装
 Nuget关键字:
 ProductAI,Malong
@@ -9,7 +278,7 @@ Install-Package MalongTech.ProductAI.API
 
 # 快速入门
 
-## Setup your account
+## 初始化账户
 ```csharp
 	 string accessKeyId = "your access key id";                        //require: 你的用户配置access_key_id
 	 string secretKey =  "your secret key";                            //require: 你的用户配置secret_key 
@@ -20,7 +289,7 @@ Install-Package MalongTech.ProductAI.API
 	        );        
 ```
 
-## Search image using image file path
+## 利用文件路径调用服务
 ```csharp
         string imagePath;
 
@@ -47,7 +316,7 @@ Install-Package MalongTech.ProductAI.API
         }
 ```
 
-## Search image async using image file path
+## 利用文件路径异步调用服务
 ```csharp
 
         string imagePath ";
@@ -65,7 +334,7 @@ Install-Package MalongTech.ProductAI.API
         );
 ```
 
-## Search image using image binary file
+## 利用二进制调用服务
 ```csharp
         Dictionary<string,string> options = new Dictionary<string, string>(); 
         byte[] fileBytes;                                                       
@@ -92,7 +361,7 @@ Install-Package MalongTech.ProductAI.API
         System.Console.WriteLine(respContent);
 ```
 
-## Search image async using image binary file
+## 利用二进制异步调用服务
 ```csharp
         Dictionary<string,string> options = new Dictionary<string, string>();
         byte[] fileBytes;
@@ -108,7 +377,7 @@ Install-Package MalongTech.ProductAI.API
         );
 ```
 
-## Search image using image url
+## 利用图片URL调用服务
 ```csharp
         string imageUrl;
 
@@ -134,7 +403,7 @@ Install-Package MalongTech.ProductAI.API
         System.Console.WriteLine(respContent);
 ```
 
-## Search image async using image url
+## 利用图片URL异步调用服务
 ```csharp
         string imageUrl;
 
@@ -150,7 +419,7 @@ Install-Package MalongTech.ProductAI.API
         );
 ```
 
-## Upload images to image set using url
+## 更新单个URL到数据集
 ```csharp
         string imageUrl;
 
@@ -175,7 +444,7 @@ Install-Package MalongTech.ProductAI.API
         System.Console.WriteLine(respContent);
 ```
 
-## Upload images to image set async using url
+## 异步更新单个数据集
 ```csharp
         string imageUrl;
 
@@ -190,7 +459,7 @@ Install-Package MalongTech.ProductAI.API
         );
 ```
 
-## Upload images to image set using a csv file
+## 利用csv文件批量向数据集中添加图片
 ```csharp
         string csvPath;
 
@@ -215,7 +484,7 @@ Install-Package MalongTech.ProductAI.API
         System.Console.WriteLine(respContent);
 ```
 
-## Upload images to image set async using a csv file
+## 异步利用csv文件批量向数据集中添加图片
 ```csharp
         string csvPath;
             
@@ -229,7 +498,7 @@ Install-Package MalongTech.ProductAI.API
         );
 ```
 
-## Remove images from image set using a csv file
+## 利用csv文件从数据集中删除图片
 ```csharp
         string csvPath;
 
@@ -253,7 +522,7 @@ Install-Package MalongTech.ProductAI.API
         System.Console.WriteLine(respContent);
 ```
 
-## Remove images from image set async using a csv file
+## 利用csv文件从数据集中异步删除图片
 ```csharp
         string csvPath;
 
@@ -265,18 +534,6 @@ Install-Package MalongTech.ProductAI.API
         options,
         RespCallback                                                             //你的异步回调函数
         ); 
-```
-
-## request async callback function
-```csharp
-	    static protected void TestCallback(bool isErr, string result) {
-	            if (isErr) {
-	                System.Console.WriteLine("request failed!");
-	            } else {
-	                System.Console.WriteLine("request success!");
-	            }
-	            System.Console.WriteLine(result);
-	  	}  
 ```
 
 
