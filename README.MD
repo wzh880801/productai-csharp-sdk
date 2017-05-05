@@ -4,7 +4,7 @@
 Nuget Keywords:
 ProductAI,Malong
 
-Nuget Cli
+Nuget Cli:
 Install-Package MalongTech.ProductAI.API
 
 # QuickStart
