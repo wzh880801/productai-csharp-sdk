@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2D5AFDF6-9093-466F-BB73-292E63AE89CE}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MalongTech.ProductAI.API</RootNamespace>
+    <AssemblyName>productai-csharp-sdk</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Base\CallApiByImageFileBaseRequest.cs" />
+    <Compile Include="Base\CallApiByImageUrlBaseRequest.cs" />
+    <Compile Include="Base\DataSetBatchModifyByFileBaseRequest.cs" />
+    <Compile Include="Base\DataSetSingleModifyByUrlBaseRequest.cs" />
+    <Compile Include="Base\SearchByImageFileBaseRequest.cs.cs" />
+    <Compile Include="Base\SearchByImageUrlBaseRequest.cs" />
+    <Compile Include="Entity\ContentAnalysis\DressingAnalysisResponse.cs" />
+    <Compile Include="Entity\ContentAnalysis\DressingClassifyByImageFileRequest.cs" />
+    <Compile Include="Entity\ContentAnalysis\DressingClassifyByImageUrlRequest.cs" />
+    <Compile Include="Entity\ContentAnalysis\ImageContentAnalysisByImageFileRequest.cs" />
+    <Compile Include="Entity\ContentAnalysis\ImageContentAnalysisByImageUrlRequest.cs" />
+    <Compile Include="Entity\ContentAnalysis\ImageContentAnalysisResponse.cs" />
+    <Compile Include="Entity\ContentAnalysis\PlaceClassifyByImageFileRequest.cs" />
+    <Compile Include="Entity\ContentAnalysis\PlaceClassifyByImageUrlRequest.cs" />
+    <Compile Include="Entity\ContentAnalysis\PornographyClassifyByImageFileRequest.cs" />
+    <Compile Include="Entity\ContentAnalysis\PornographyClassifyByImageUrlRequest.cs" />
+    <Compile Include="Entity\DataSet\DataSetBatchAddRequest.cs" />
+    <Compile Include="Entity\DataSet\DataSetBatchDeleteRequest.cs" />
+    <Compile Include="Entity\DataSet\DataSetModifyResponse.cs" />
+    <Compile Include="Entity\DataSet\DataSetSingleAddByImageUrlRequest.cs" />
+    <Compile Include="Entity\Detect\Detect3CElectronicsByImageFileRequest.cs" />
+    <Compile Include="Entity\Detect\Detect3CElectronicsByImageUrlRequest.cs" />
+    <Compile Include="Entity\Detect\DetectClothByImageFileRequest.cs" />
+    <Compile Include="Entity\Detect\DetectClothByImageUrlRequest.cs" />
+    <Compile Include="Entity\Detect\DetectFoodByImageFileRequest.cs" />
+    <Compile Include="Entity\Detect\DetectFoodByImageUrlRequest.cs" />
+    <Compile Include="Entity\Detect\DetectFurnitureAndHouseholdByImageFileRequest.cs" />
+    <Compile Include="Entity\Detect\DetectFurnitureAndHouseholdByImageUrlRequest.cs" />
+    <Compile Include="Entity\Detect\DetectOrdinaryProductsByImageFileRequest.cs" />
+    <Compile Include="Entity\Detect\DetectOrdinaryProductsByImageUrlRequest.cs" />
+    <Compile Include="Entity\Detect\DetectPetByImageFileRequest.cs" />
+    <Compile Include="Entity\Detect\DetectPetByImageUrlRequest.cs" />
+    <Compile Include="Entity\Detect\DetectResponse.cs" />
+    <Compile Include="Entity\Detect\DetectVehicleByImageFileRequest.cs" />
+    <Compile Include="Entity\Detect\DetectVehicleByImageUrlRequest.cs" />
+    <Compile Include="Entity\ImageSearch\ImageSearchByImageFileRequest.cs" />
+    <Compile Include="Entity\ImageSearch\ImageSearchByImageUrlRequest.cs" />
+    <Compile Include="Entity\ImageSearch\ImageSearchResponse.cs" />
+    <Compile Include="Entity\SmartFilter\IntelligentFilterByImageFileRequest.cs" />
+    <Compile Include="Entity\SmartFilter\IntelligentFilterByImageUrlRequest.cs" />
+    <Compile Include="Entity\SmartFilter\IntelligentFilterResponse.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ResponseResultEntity\DetectResult.cs" />
+    <Compile Include="ResponseResultEntity\DressingAnalysisResult.cs" />
+    <Compile Include="ResponseResultEntity\ImageContentAnalysisResult.cs" />
+    <Compile Include="ResponseResultEntity\IntelligentFilterResult.cs" />
+    <Compile Include="ResponseResultEntity\SearchResult.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MalongTech.ProductAI.Core\productai-csahrp-sdk-core.csproj">
+      <Project>{a464f4af-eef3-4ccb-8f23-e8f0f0309420}</Project>
+      <Name>productai-csahrp-sdk-core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
