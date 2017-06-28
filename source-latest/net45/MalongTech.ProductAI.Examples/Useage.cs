@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Configuration;
 using MalongTech.ProductAI.Core;
 using MalongTech.ProductAI.API.Entity;
 
@@ -13,8 +14,8 @@ namespace MalongTech.ProductAI.Examples
             IProfile profile = new DefaultProfile
             {
                 Version = "1",
-                AccessKeyId = "XXXXXXXXXXXXXXXXXXXXX",
-                SecretKey = "XXXXXXXXXXXXXXXXXXXXX",
+                AccessKeyId = ConfigurationManager.AppSettings["AccessKeyId"],
+                SecretKey = ConfigurationManager.AppSettings["SecretKey"],
 
                 // set this property = null if you want to control the language type of each request
                 GlobalLanguage = LanguageType.Chinese

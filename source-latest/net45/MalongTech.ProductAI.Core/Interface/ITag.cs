@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace MalongTech.ProductAI.Core
 {
@@ -12,5 +13,7 @@ namespace MalongTech.ProductAI.Core
         void Add(ISearchTag andTag);
 
         void Add(string tagString);
+
+        void Add(IList<string> tags);
     }
 }

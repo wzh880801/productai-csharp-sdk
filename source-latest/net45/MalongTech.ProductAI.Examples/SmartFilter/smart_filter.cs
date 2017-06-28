@@ -1,36 +1,20 @@
 ﻿using System;
-using System.Collections.Generic;
 using MalongTech.ProductAI.Core;
 using MalongTech.ProductAI.API.Entity;
 
 namespace MalongTech.ProductAI.Examples
 {
-    class ImageSearchExample : IExample
+    class SmartFilterExample : IExample
     {
         public void Run(IWebClient client)
         {
-            Console.WriteLine("==>  Demo - 通用图像搜索  <==");
-            Console.WriteLine("See https://api-doc.productai.cn/doc/pai.html#通用图像搜索 for details.\r\n");
+            Console.WriteLine("==>  Demo - 智能滤镜  <==");
+            Console.WriteLine("See https://api-doc.productai.cn/doc/pai.html#智能滤镜 for details.\r\n");
 
-            //复杂Tag查询示例
-            ISearchTag andTag = new AndTag();
-            andTag.Add("上衣");
-            andTag.Add(new List<string> { "圆领", "无袖" });
-
-            ISearchTag orTag = new OrTag();
-            orTag.Add("蓝色");
-            orTag.Add("休闲");
-            andTag.Add(orTag);
-            ITag searchTag = new SearchTag
-            {
-                Tag = andTag
-            };
-
-            var request = new ImageSearchByImageFileRequest("k7h9fail")
+            var request = new IntelligentFilterByImageFileRequest()
             {
                 ImageFile = new System.IO.FileInfo(@".\ContentAnalysis\f10.jpg"),
                 Language = LanguageType.Chinese,
-                SearchTag = searchTag
             };
 
             try
@@ -40,7 +24,7 @@ namespace MalongTech.ProductAI.Examples
                 Console.WriteLine("==========================Result==========================");
                 foreach (var r in response.Results)
                 {
-                    Console.WriteLine("{0}\t\t{1}", r.Url, r.Score);
+                    Console.WriteLine("{0}\t\t{1}\t\t{2}", r.ImageUrl, r.Score, r.Tag);
                 }
                 Console.WriteLine("==========================Result==========================");
             }

@@ -9,14 +9,7 @@ namespace MalongTech.ProductAI.API
         where T : BaseResponse
     {
         /// <summary>
-        /// 简单Tag
-        /// 和SearchTag二选一，如果二者都设置了值，则忽略此值
-        /// </summary>
-        public List<string> SearchTags { get; set; }
-
-        /// <summary>
-        /// 复杂Tag
-        /// 和SearchTags二选一，如果二者都设置了值，则使用此值
+        /// 搜索标签
         /// </summary>
         public ITag SearchTag { get; set; }
 
@@ -28,10 +21,7 @@ namespace MalongTech.ProductAI.API
                 if (this.SearchTag != null)
                     return this.SearchTag.ToString();
 
-                if (this.SearchTags == null || this.SearchTags.Count == 0)
-                    return null;
-
-                return string.Join("|", this.SearchTags);
+                return null;
             }
 
             /*
@@ -59,16 +49,16 @@ namespace MalongTech.ProductAI.API
 
         }
 
-        public SearchByImageFileBaseRequest(string serviceType, string serviceId, string loc = "0-0-1-1", List<string> tags = null, int? count = null)
+        public SearchByImageFileBaseRequest(string serviceType, string serviceId, string loc = "0-0-1-1", ITag searchTag = null, int? count = null)
             : this(serviceType, serviceId)
         {
             this.Loc = loc;
-            this.SearchTags = tags;
+            this.SearchTag = searchTag;
             this.Count = count;
         }
 
-        public SearchByImageFileBaseRequest(string serviceType, string serviceId, FileInfo imageFile, string loc = "0-0-1-1", List<string> tags = null, int? count = null)
-            : this(serviceType, serviceId, loc, tags, count)
+        public SearchByImageFileBaseRequest(string serviceType, string serviceId, FileInfo imageFile, string loc = "0-0-1-1", ITag searchTag = null, int? count = null)
+            : this(serviceType, serviceId, loc, searchTag, count)
         {
             this.ImageFile = imageFile;
         }

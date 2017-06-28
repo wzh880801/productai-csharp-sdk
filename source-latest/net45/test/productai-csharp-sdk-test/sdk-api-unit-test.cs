@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Configuration;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MalongTech.ProductAI.Core;
 using MalongTech.ProductAI.API.Entity;
@@ -40,8 +41,8 @@ namespace MalongTech.ProductAI.Test
         [TestMethod]
         public void DetectTest()
         {
-            client.Profile.AccessKeyId = "3c289113a9b86b63f46551c895c2a617";
-            client.Profile.SecretKey = "xxxx";//replace this using the real key to pass the test
+            client.Profile.AccessKeyId = ConfigurationManager.AppSettings["AccessKeyId"];
+            client.Profile.SecretKey = ConfigurationManager.AppSettings["SecretKey"];
 
             var request = new DetectByImageUrlRequest(DetectType.Cloth)
             {

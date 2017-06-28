@@ -10,36 +10,39 @@ namespace MalongTech.ProductAI.API
         public SearchByImageUrlBaseRequest(string serviceType, string serviceId)
             : base(serviceType, serviceId)
         {
-            
+
         }
 
-        public List<string> SearchTags { get; set; }
+        /// <summary>
+        /// 搜索标签
+        /// </summary>
+        public ITag SearchTag { get; set; }
 
         [ParaSign("tags", true)]
         public string Tags
         {
             get
             {
-                if (this.SearchTags == null || this.SearchTags.Count == 0)
-                    return null;
+                if (this.SearchTag != null)
+                    return this.SearchTag.ToString();
 
-                return string.Join("|", this.SearchTags);
+                return null;
             }
         }
 
         [ParaSign("count")]
         public int? Count { get; set; }
 
-        public SearchByImageUrlBaseRequest(string serviceType, string serviceId, string loc = "0-0-1-1", List<string> tags = null, int? count = null)
+        public SearchByImageUrlBaseRequest(string serviceType, string serviceId, string loc = "0-0-1-1", ITag searchTag = null, int? count = null)
             : this(serviceType, serviceId)
         {
             this.Loc = loc;
-            this.SearchTags = tags;
+            this.SearchTag = searchTag;
             this.Count = count;
         }
 
-        public SearchByImageUrlBaseRequest(string serviceType, string serviceId, string url, string loc = "0-0-1-1", List<string> tags = null, int? count = null)
-            : this(serviceType, serviceId, loc, tags, count)
+        public SearchByImageUrlBaseRequest(string serviceType, string serviceId, string url, string loc = "0-0-1-1", ITag searchTag = null, int? count = null)
+            : this(serviceType, serviceId, loc, searchTag, count)
         {
             this.Url = url;
         }

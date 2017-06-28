@@ -64,7 +64,7 @@ namespace MalongTech.ProductAI.API
         [ParaSign("meta")]
         public string Meta { get; set; }
 
-        public DataSetSingleModifyByUrlBaseRequest(string imageSetId, List<string> tags = null, string metaId = null)
+        public DataSetSingleModifyByUrlBaseRequest(string imageSetId, List<string> tags = null, string meta = null)
         : base()
         {
             if (string.IsNullOrWhiteSpace(imageSetId))
@@ -72,11 +72,11 @@ namespace MalongTech.ProductAI.API
 
             this._imageSetId = imageSetId;
             this.SearchTags = tags;
-            this.Meta = metaId;
+            this.Meta = meta;
         }
 
-        public DataSetSingleModifyByUrlBaseRequest(string imageSetId, string imageUrl, List<string> tags = null, string metaId = null)
-                : this(imageSetId, tags, metaId)
+        public DataSetSingleModifyByUrlBaseRequest(string imageSetId, string imageUrl, List<string> tags = null, string meta = null)
+                : this(imageSetId, tags, meta)
         {
             this.ImageUrl = imageUrl;
         }

@@ -15,33 +15,48 @@ namespace MalongTech.ProductAI.Core
 
     public class AndTag : ISearchTag
     {
-        private List<string> json = new List<string>();
+        private List<object> tags = new List<object>();
 
         public void Add(ISearchTag tag)
         {
-            json.Add(tag.ToString());
+            tags.Add(tag);
         }
 
         public void Add(string tagString)
         {
-            json.Add(tagString);
+            if (string.IsNullOrWhiteSpace(tagString))
+                throw new ArgumentException(nameof(tagString));
+
+            tags.Add(tagString);
+        }
+
+        public void Add(IList<string> tagList)
+        {
+            tags.Add(tagList);
         }
 
         public override string ToString()
         {
             var s = "\"and\":[";
-            foreach(var _json in json)
+            foreach (var tag in tags)
             {
-                if (!string.IsNullOrWhiteSpace(_json))
+                var _type = tag.GetType();
+                if (_type == typeof(System.String))
                 {
-                    if (_json.StartsWith("{"))
-                    {
-                        s += string.Format("{0},", _json);
-                    }
-                    else
-                    {
-                        s += string.Format("\"{0}\",", _json);
-                    }
+                    s += string.Format("\"{0}\",", tag);
+                }
+                else if (typeof(ISearchTag).IsAssignableFrom(_type))
+                {
+                    s += string.Format("{{{0}}},", tag.ToString());
+                }
+                else if (_type.IsGenericType)
+                {
+                    var _list = tag as IList<string>;
+                    if (_list != null)
+                        foreach (var tagString in _list)
+                        {
+                            s += string.Format("\"{0}\",", tagString);
+                        }
                 }
             }
             s = s.TrimEnd(',');
@@ -51,37 +66,52 @@ namespace MalongTech.ProductAI.Core
 
     public class OrTag : ISearchTag
     {
-        private List<string> json = new List<string>();
+        private List<object> tags = new List<object>();
 
         public void Add(ISearchTag tag)
         {
-            json.Add(tag.ToString());
+            tags.Add(tag);
         }
 
         public void Add(string tagString)
         {
-            json.Add(tagString);
+            if (string.IsNullOrWhiteSpace(tagString))
+                throw new ArgumentException(nameof(tagString));
+
+            tags.Add(tagString);
+        }
+
+        public void Add(IList<string> tagList)
+        {
+            tags.Add(tagList);
         }
 
         public override string ToString()
         {
-            var s = "{\"or\":[";
-            foreach (var _json in json)
+            var s = "\"or\":[";
+            foreach (var tag in tags)
             {
-                if (!string.IsNullOrWhiteSpace(_json))
+                var _type = tag.GetType();
+                if (_type == typeof(System.String))
                 {
-                    if (_json.StartsWith("{"))
-                    {
-                        s += string.Format("{0},", _json);
-                    }
-                    else
-                    {
-                        s += string.Format("\"{0}\",", _json);
-                    }
+                    s += string.Format("\"{0}\",", tag);
+                }
+                else if (typeof(ISearchTag).IsAssignableFrom(_type))
+                {
+                    s += string.Format("{{{0}}},", tag.ToString());
+                }
+                else if (_type.IsGenericType)
+                {
+                    var _list = tag as IList<string>;
+                    if (_list != null)
+                        foreach (var tagString in _list)
+                        {
+                            s += string.Format("\"{0}\",", tagString);
+                        }
                 }
             }
             s = s.TrimEnd(',');
-            return s + "]}";
+            return s + "]";
         }
     }
 }
