@@ -10,13 +10,13 @@ namespace MalongTech.ProductAI.Examples
             IProfile profile = new DefaultProfile
             {
                 Version = "1",
-                AccessKeyId = "<your access key id>",
-                SecretKey = "<your secret key>",
+                AccessKeyId = "XXXXXXXXXXXXXXXXXXXXXXXXX",
+                SecretKey = "XXXXXXXXXXXXXXXXXXXXXXX",
                 GlobalLanguage = LanguageType.Chinese
             };
             var client = new DefaultProductAIClient(profile);
 
-            IExample example = new ClassifyPlaceExample();
+            IExample example = new ImageSearchExample();
             example.Run(client);
 
             Console.WriteLine("\r\nDone");

@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace MalongTech.ProductAI.API.Entity
 {
-    public class DressingAnalysisResult
+    public class DressingClassifyResult
     {
         [JsonProperty("textures")]
         public string[] Textures { get; set; }

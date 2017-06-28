@@ -5,26 +5,26 @@ using MalongTech.ProductAI.API.Entity;
 namespace MalongTech.ProductAI.Examples
 {
     /// <summary>
-    /// 场景分析与标注
-    /// https://api-doc.productai.cn/doc/pai.html#场景分析与标注
+    /// 3C电器检测与定位
+    /// https://api-doc.productai.cn/doc/pai.html#3C电器检测与定位
     /// </summary>
-    class ClassifyPlaceExample : IExample
+    class DetectExample : IExample
     {
         public void Run(IWebClient client)
         {
-            Console.WriteLine("==>  Demo - 场景分析与标注  <==");
-            Console.WriteLine("See https://api-doc.productai.cn/doc/pai.html#场景分析与标注 for details.\r\n");
+            Console.WriteLine("==>  Demo - 3C电器检测与定位  <==");
+            Console.WriteLine("See https://api-doc.productai.cn/doc/pai.html#3C电器检测与定位 for details.\r\n");
 
-            var request = new ClassifyByImageFileRequest(ClassifyType.Place)
+            var request = new DetectByImageFileRequest(DetectType.ThreeCAndElectronics)
             {
-                ImageFile = new System.IO.FileInfo(@".\ContentAnalysis\f10.jpg"),
+                ImageFile = new System.IO.FileInfo(@".\Detect\iphone.jpg"),
                 Language = LanguageType.Chinese
             };
 
             // use image url
-            //var request = new PlaceClassifyByImageUrlRequest
+            //var request = new Detect3CElectronicsByImageUrlRequest
             //{
-            //    Url = "http://productai.cn/img/f10.jpg",
+            //    Url = "http://productai.cn/img/f12.jpg",
             //    Language = LanguageType.Chinese
             //};
 
@@ -33,9 +33,9 @@ namespace MalongTech.ProductAI.Examples
                 var response = client.GetResponse(request);
 
                 Console.WriteLine("==========================Result==========================");
-                foreach (var r in response.Results)
+                foreach (var r in response.DetectedBoxes)
                 {
-                    Console.WriteLine("{0}\t\t{1}", r.Category, r.Score);
+                    Console.WriteLine("{0}\t\t{1}", r.Type, r.Score);
                 }
                 Console.WriteLine("==========================Result==========================");
             }
@@ -47,7 +47,7 @@ namespace MalongTech.ProductAI.Examples
             }
             catch (ClientException ex)
             {
-                Console.WriteLine("ClientException happened: \r\n\tRequestId: {0}\r\n\tErrorCode: {1}\r\n\tErrorMessage: {2}",
+                Console.WriteLine("ClientException happened: \r\n\tRequestId: {0}\r\n\tErrorCode:\r\n\t{1}\r\n\tErrorMessage: {2}",
                     ex.RequestId,
                     ex.ErrorCode,
                     ex.ErrorMessage);

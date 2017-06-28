@@ -126,14 +126,7 @@ namespace MalongTech.ProductAI.Core
 
                 request.SetHeader("x-ca-signature", SignnatureHelper.Signnature(_profile.SecretKey, dics));
 
-                foreach (var p in properties)
-                {
-                    if (p.Name == "Host" && p.CanWrite && p.PropertyType == typeof(System.String))
-                    {
-                        p.SetValue(request, _host);
-                        break;
-                    }
-                }
+                request.Host = this._host;
 
                 if (this._profile.GlobalLanguage != null)
                     request.Language = this._profile.GlobalLanguage.Value;

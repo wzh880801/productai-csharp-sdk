@@ -42,7 +42,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ContentAnalysis\classify_place_cls.cs" />
+    <Compile Include="DataSet\dataset_management.cs" />
+    <Compile Include="Detect\detect_example.cs" />
     <Compile Include="IExample.cs" />
+    <Compile Include="ImageSearch\image_search.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Useage.cs" />
@@ -67,10 +70,9 @@
     <Content Include="ContentAnalysis\f10.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Detect\iphone.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Detect\" />
-    <Folder Include="ImageSearch\" />
     <Folder Include="SmartFilter\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

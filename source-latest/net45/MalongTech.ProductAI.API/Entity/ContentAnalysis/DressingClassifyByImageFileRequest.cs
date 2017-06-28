@@ -7,7 +7,7 @@ namespace MalongTech.ProductAI.API.Entity
     /// <para>https://api-doc.productai.cn/doc/pai.html#时尚智能分析</para>
     /// </summary>
     public class DressingClassifyByImageFileRequest 
-        : CallApiByImageFileBaseRequest<DressingAnalysisResponse>
+        : CallApiByImageFileBaseRequest<DressingClassifyResponse>
     {
         public DressingClassifyByImageFileRequest(string loc = "0-0-1-1")
             : base("classify_dressing", "_0000057", loc)

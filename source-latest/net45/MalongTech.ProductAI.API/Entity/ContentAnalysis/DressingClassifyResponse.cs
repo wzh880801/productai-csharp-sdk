@@ -4,9 +4,9 @@ using MalongTech.ProductAI.Core;
 
 namespace MalongTech.ProductAI.API.Entity
 {
-    public class DressingAnalysisResponse : BaseResponse
+    public class DressingClassifyResponse : BaseResponse
     {
         [JsonProperty("results")]
-        public DressingAnalysisResult[] Results { get; set; }
+        public DressingClassifyResult[] Results { get; set; }
     }
 }

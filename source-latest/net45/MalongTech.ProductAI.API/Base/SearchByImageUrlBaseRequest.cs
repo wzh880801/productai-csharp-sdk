@@ -30,20 +30,16 @@ namespace MalongTech.ProductAI.API
         [ParaSign("count")]
         public int? Count { get; set; }
 
-        [ParaSign("threshold")]
-        public double? Threshold { get; set; }
-
-        public SearchByImageUrlBaseRequest(string serviceType, string serviceId, string loc = "0-0-1-1", List<string> tags = null, int? count = null, double? threshold = null)
+        public SearchByImageUrlBaseRequest(string serviceType, string serviceId, string loc = "0-0-1-1", List<string> tags = null, int? count = null)
             : this(serviceType, serviceId)
         {
             this.Loc = loc;
             this.SearchTags = tags;
             this.Count = count;
-            this.Threshold = threshold;
         }
 
-        public SearchByImageUrlBaseRequest(string serviceType, string serviceId, string url, string loc = "0-0-1-1", List<string> tags = null, int? count = null, double? threshold = null)
-            : this(serviceType, serviceId, loc, tags, count, threshold)
+        public SearchByImageUrlBaseRequest(string serviceType, string serviceId, string url, string loc = "0-0-1-1", List<string> tags = null, int? count = null)
+            : this(serviceType, serviceId, loc, tags, count)
         {
             this.Url = url;
         }

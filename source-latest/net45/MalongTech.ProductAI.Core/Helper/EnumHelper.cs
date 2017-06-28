@@ -32,5 +32,35 @@ namespace MalongTech.ProductAI.Core
 
             return dic;
         }
+
+        public static Dictionary<int, AIService> ToServiceDictionary(this Type _enumType)
+        {
+            if (!_enumType.IsEnum)
+                throw new InvalidCastException("Only support enum type!");
+            var dic = new Dictionary<int, AIService>();
+
+            var ps = _enumType.GetFields();
+            foreach (var p in ps)
+            {
+                if (p.FieldType != _enumType)
+                    continue;
+
+                var at = p.GetCustomAttribute(typeof(ServiceDescriptionAttribute));
+                if (at != null)
+                {
+                    var a = at as ServiceDescriptionAttribute;
+                    dic.Add(Convert.ToInt32(p.GetValue(_enumType)), new AIService
+                    {
+                        Name = a.Name,
+                        ServiceType = a.ServiceType,
+                        ServiceId = a.ServiceId
+                    });
+                }
+                else
+                    throw new Exception(string.Format("{0} has no ServiceDescriptionAttribute", p.Name));
+            }
+
+            return dic;
+        }
     }
 }

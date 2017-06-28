@@ -16,6 +16,30 @@ namespace MalongTech.ProductAI.API
         private string _serviceType = "";
         private string _serviceId = "";
 
+        public string ServiceTye
+        {
+            get
+            {
+                return _serviceType;
+            }
+            set
+            {
+                _serviceType = value;
+            }
+        }
+
+        public string ServiceId
+        {
+            get
+            {
+                return _serviceId;
+            }
+            set
+            {
+                _serviceId = value;
+            }
+        }
+
         public override string ApiUrl
         {
             get
@@ -61,6 +85,11 @@ namespace MalongTech.ProductAI.API
                 return string.Join("&", list);
                 //return string.Format("url={0}&loc={1}", System.Web.HttpUtility.UrlEncode(this.Url), this.Loc);
             }
+        }
+
+        public CallApiByImageUrlBaseRequest()
+        {
+
         }
 
         public CallApiByImageUrlBaseRequest(string serviceType, string serviceId)
