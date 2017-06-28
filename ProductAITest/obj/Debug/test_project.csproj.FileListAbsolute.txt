@@ -1,8 +1,0 @@
-D:\Git\productat_csharp_sdk\test_project\bin\Debug\productat_csharp_sdk.exe.config
-D:\Git\productat_csharp_sdk\test_project\bin\Debug\productat_csharp_sdk.exe
-D:\Git\productat_csharp_sdk\test_project\bin\Debug\productat_csharp_sdk.pdb
-D:\Git\productat_csharp_sdk\test_project\obj\Debug\test_project.csprojResolveAssemblyReference.cache
-D:\Git\productat_csharp_sdk\test_project\obj\Debug\productat_csharp_sdk.exe
-D:\Git\productat_csharp_sdk\test_project\obj\Debug\productat_csharp_sdk.pdb
-D:\Git\productat_csharp_sdk\test_project\bin\Debug\ProductAISDK.dll
-D:\Git\productat_csharp_sdk\test_project\bin\Debug\ProductAISDK.pdb

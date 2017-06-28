@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{A464F4AF-EEF3-4CCB-8F23-E8F0F0309420}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MalongTech.ProductAI.Core</RootNamespace>
+    <AssemblyName>productai-csharp-sdk-core</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Attribute\EnumDescriptionAttribute.cs" />
+    <Compile Include="Attribute\ParaSignAttribute.cs" />
+    <Compile Include="Attribute\ServiceDescriptionAttribute.cs" />
+    <Compile Include="Base\BaseRequest.cs" />
+    <Compile Include="Base\BaseResponse.cs" />
+    <Compile Include="DefaultProfile.cs" />
+    <Compile Include="DefaultProductAIClient.cs" />
+    <Compile Include="Entity\AIService.cs" />
+    <Compile Include="Entity\SearchTag.cs" />
+    <Compile Include="Enum\ClassifyType.cs" />
+    <Compile Include="Enum\ContentType.cs" />
+    <Compile Include="Enum\HttpMethod.cs" />
+    <Compile Include="Enum\LanguageType.cs" />
+    <Compile Include="Enum\ResponseType.cs" />
+    <Compile Include="Enum\DetectType.cs" />
+    <Compile Include="Exceptions\ClientException.cs" />
+    <Compile Include="Exceptions\ServerException.cs" />
+    <Compile Include="Helper\EnumHelper.cs" />
+    <Compile Include="Helper\FileHelper.cs" />
+    <Compile Include="Helper\RequestHelper.cs" />
+    <Compile Include="Helper\SignnatureHelper.cs" />
+    <Compile Include="Helper\WebQueryHelper.cs" />
+    <Compile Include="Interface\IProfile.cs" />
+    <Compile Include="Interface\ITag.cs" />
+    <Compile Include="Interface\IWebClient.cs" />
+    <Compile Include="Internal\HttpResponse.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

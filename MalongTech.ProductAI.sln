@@ -1,0 +1,59 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "productai-csahrp-sdk-core", "source-latest\net45\MalongTech.ProductAI.Core\productai-csahrp-sdk-core.csproj", "{A464F4AF-EEF3-4CCB-8F23-E8F0F0309420}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "netcore", "netcore", "{DFD7B3C1-6C63-4482-AC1B-D990C19369CD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "net45", "net45", "{53C10150-607E-4EBB-9735-7F8C89243A7A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "source", "source", "{715522A4-9093-4186-9934-E1A33207AD9F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "examples", "examples", "{F519CCA0-7FE9-4D51-9DFD-21187ED16B9B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "productai-csharp-sdk", "source-latest\net45\MalongTech.ProductAI.API\productai-csharp-sdk.csproj", "{2D5AFDF6-9093-466F-BB73-292E63AE89CE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "productai-csharp-sdk-examples", "source-latest\net45\MalongTech.ProductAI.Examples\productai-csharp-sdk-examples.csproj", "{B5BC8EC4-2269-42BE-8B3C-39084FC5D89C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{03FFBA23-3E4E-4A46-B2C3-B7B006E49654}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "productai-csharp-sdk-test", "source-latest\net45\test\productai-csharp-sdk-test\productai-csharp-sdk-test.csproj", "{C85B3339-1FFA-409B-B799-40C2F1518672}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A464F4AF-EEF3-4CCB-8F23-E8F0F0309420}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A464F4AF-EEF3-4CCB-8F23-E8F0F0309420}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A464F4AF-EEF3-4CCB-8F23-E8F0F0309420}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A464F4AF-EEF3-4CCB-8F23-E8F0F0309420}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2D5AFDF6-9093-466F-BB73-292E63AE89CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D5AFDF6-9093-466F-BB73-292E63AE89CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D5AFDF6-9093-466F-BB73-292E63AE89CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D5AFDF6-9093-466F-BB73-292E63AE89CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5BC8EC4-2269-42BE-8B3C-39084FC5D89C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5BC8EC4-2269-42BE-8B3C-39084FC5D89C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5BC8EC4-2269-42BE-8B3C-39084FC5D89C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5BC8EC4-2269-42BE-8B3C-39084FC5D89C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C85B3339-1FFA-409B-B799-40C2F1518672}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C85B3339-1FFA-409B-B799-40C2F1518672}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C85B3339-1FFA-409B-B799-40C2F1518672}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C85B3339-1FFA-409B-B799-40C2F1518672}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A464F4AF-EEF3-4CCB-8F23-E8F0F0309420} = {715522A4-9093-4186-9934-E1A33207AD9F}
+		{715522A4-9093-4186-9934-E1A33207AD9F} = {53C10150-607E-4EBB-9735-7F8C89243A7A}
+		{F519CCA0-7FE9-4D51-9DFD-21187ED16B9B} = {53C10150-607E-4EBB-9735-7F8C89243A7A}
+		{2D5AFDF6-9093-466F-BB73-292E63AE89CE} = {715522A4-9093-4186-9934-E1A33207AD9F}
+		{B5BC8EC4-2269-42BE-8B3C-39084FC5D89C} = {F519CCA0-7FE9-4D51-9DFD-21187ED16B9B}
+		{03FFBA23-3E4E-4A46-B2C3-B7B006E49654} = {53C10150-607E-4EBB-9735-7F8C89243A7A}
+		{C85B3339-1FFA-409B-B799-40C2F1518672} = {03FFBA23-3E4E-4A46-B2C3-B7B006E49654}
+	EndGlobalSection
+EndGlobal
