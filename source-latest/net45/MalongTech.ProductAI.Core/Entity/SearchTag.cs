@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace MalongTech.ProductAI.Core
 {
@@ -32,7 +33,9 @@ namespace MalongTech.ProductAI.Core
 
         public void Add(IList<string> tagList)
         {
-            tags.Add(tagList);
+            if (tagList != null)
+                foreach (var tag in tagList.Where(p => !string.IsNullOrWhiteSpace(p)))
+                    Add(tag);
         }
 
         public override string ToString()
@@ -48,15 +51,6 @@ namespace MalongTech.ProductAI.Core
                 else if (typeof(ISearchTag).IsAssignableFrom(_type))
                 {
                     s += string.Format("{{{0}}},", tag.ToString());
-                }
-                else if (_type.IsGenericType)
-                {
-                    var _list = tag as IList<string>;
-                    if (_list != null)
-                        foreach (var tagString in _list)
-                        {
-                            s += string.Format("\"{0}\",", tagString);
-                        }
                 }
             }
             s = s.TrimEnd(',');
@@ -83,7 +77,9 @@ namespace MalongTech.ProductAI.Core
 
         public void Add(IList<string> tagList)
         {
-            tags.Add(tagList);
+            if (tagList != null)
+                foreach (var tag in tagList.Where(p => !string.IsNullOrWhiteSpace(p)))
+                    Add(tag);
         }
 
         public override string ToString()
@@ -99,15 +95,6 @@ namespace MalongTech.ProductAI.Core
                 else if (typeof(ISearchTag).IsAssignableFrom(_type))
                 {
                     s += string.Format("{{{0}}},", tag.ToString());
-                }
-                else if (_type.IsGenericType)
-                {
-                    var _list = tag as IList<string>;
-                    if (_list != null)
-                        foreach (var tagString in _list)
-                        {
-                            s += string.Format("\"{0}\",", tagString);
-                        }
                 }
             }
             s = s.TrimEnd(',');
