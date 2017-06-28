@@ -24,5 +24,17 @@ namespace MalongTech.ProductAI.API.Entity
         {
             this.Url = url;
         }
+
+        public DetectByImageUrlRequest(string serviceType, string serviceId, string loc = "0-0-1-1")
+            : base(serviceType, serviceId, loc)
+        {
+
+        }
+
+        public DetectByImageUrlRequest(string serviceType, string serviceId, string url, string loc = "0-0-1-1")
+            : this(serviceType, serviceId, loc)
+        {
+            this.Url = url;
+        }
     }
 }

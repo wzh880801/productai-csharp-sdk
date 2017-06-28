@@ -3,7 +3,7 @@
 namespace MalongTech.ProductAI.Core
 {
     [AttributeUsage(AttributeTargets.Field)]
-    public class ServiceDescriptionAttribute : Attribute
+    internal class ServiceDescriptionAttribute : Attribute
     {
         public string Name { get; set; }
         public string ServiceType { get; set; }

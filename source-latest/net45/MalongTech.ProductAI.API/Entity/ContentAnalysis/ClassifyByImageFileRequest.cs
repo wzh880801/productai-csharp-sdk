@@ -24,5 +24,17 @@ namespace MalongTech.ProductAI.API.Entity
         {
             this.ImageFile = imageFile;
         }
+
+        public ClassifyByImageFileRequest(string serviceType, string serviceId, string loc = "0-0-1-1")
+            : base(serviceType, serviceId, loc)
+        {
+
+        }
+
+        public ClassifyByImageFileRequest(string serviceType, string serviceId, System.IO.FileInfo imageFile, string loc = "0-0-1-1")
+            : this(serviceType, serviceId, loc)
+        {
+            this.ImageFile = imageFile;
+        }
     }
 }

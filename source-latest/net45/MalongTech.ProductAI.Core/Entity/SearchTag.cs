@@ -14,9 +14,16 @@ namespace MalongTech.ProductAI.Core
         }
     }
 
-    public class AndTag : ISearchTag
+    public abstract class TagBase : ISearchTag
     {
-        private List<object> tags = new List<object>();
+        private string _operator = "and";
+
+        private List<object> tags = new List<object>();  
+
+        public TagBase(string _operator)
+        {
+            this._operator = _operator;
+        }
 
         public void Add(ISearchTag tag)
         {
@@ -40,7 +47,7 @@ namespace MalongTech.ProductAI.Core
 
         public override string ToString()
         {
-            var s = "\"and\":[";
+            var s = string.Format("\"{0}\":[", _operator);
             foreach (var tag in tags)
             {
                 var _type = tag.GetType();
@@ -58,47 +65,21 @@ namespace MalongTech.ProductAI.Core
         }
     }
 
-    public class OrTag : ISearchTag
+    public class AndTag : TagBase
     {
-        private List<object> tags = new List<object>();
-
-        public void Add(ISearchTag tag)
+        public AndTag()
+            : base("and")
         {
-            tags.Add(tag);
+
         }
+    }
 
-        public void Add(string tagString)
+    public class OrTag : TagBase
+    {
+        public OrTag()
+            : base("or")
         {
-            if (string.IsNullOrWhiteSpace(tagString))
-                throw new ArgumentException(nameof(tagString));
 
-            tags.Add(tagString);
-        }
-
-        public void Add(IList<string> tagList)
-        {
-            if (tagList != null)
-                foreach (var tag in tagList.Where(p => !string.IsNullOrWhiteSpace(p)))
-                    Add(tag);
-        }
-
-        public override string ToString()
-        {
-            var s = "\"or\":[";
-            foreach (var tag in tags)
-            {
-                var _type = tag.GetType();
-                if (_type == typeof(System.String))
-                {
-                    s += string.Format("\"{0}\",", tag);
-                }
-                else if (typeof(ISearchTag).IsAssignableFrom(_type))
-                {
-                    s += string.Format("{{{0}}},", tag.ToString());
-                }
-            }
-            s = s.TrimEnd(',');
-            return s + "]";
         }
     }
 }

@@ -3,7 +3,7 @@
 namespace MalongTech.ProductAI.Core
 {
     [AttributeUsage(AttributeTargets.Field)]
-    public class EnumDescriptionAttribute : Attribute
+    internal class EnumDescriptionAttribute : Attribute
     {
         public string Text { get; set; }
 
