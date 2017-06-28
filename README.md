@@ -8,6 +8,14 @@
 - [ProductAI Documentation](https://api-doc.productai.cn/doc/pai.html)
 
 # Usage（用法）:
+## Install
+Nuget Keywords: *ProductAI*, *Malong*
+
+Nuget Command-Line:
+```
+Install-Package MalongTech.ProductAI.API
+```
+## Example code
 ```C#
 using System;
 using MalongTech.ProductAI.Core;
