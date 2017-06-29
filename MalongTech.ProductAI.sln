@@ -21,6 +21,18 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{03FFBA23-3
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "productai-csharp-sdk-test", "source-latest\net45\test\productai-csharp-sdk-test\productai-csharp-sdk-test.csproj", "{C85B3339-1FFA-409B-B799-40C2F1518672}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "source", "source", "{309523E7-4B3E-4D24-BCFB-8C10329E5D7E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "examples", "examples", "{ED951F2E-A4A0-4BE1-AD62-36FE20D928DD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{5FA15DD5-47AC-4A4D-A9A5-80F9D0AAA533}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "productai-dotnetcore-sdk-core", "source-latest\netcore\productai-dotnetcore-sdk-core\productai-dotnetcore-sdk-core.csproj", "{9172B954-6459-4DBF-91EF-18940BDA63AE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "productai-dotnetcore-sdk", "source-latest\netcore\productai-dotnetcore-sdk\productai-dotnetcore-sdk.csproj", "{0DC04CBE-C4BC-4DCE-9052-9472AC8E760E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "productai-dotnetcore-sdk-examples", "source-latest\netcore\productai-dotnetcore-sdk-examples\productai-dotnetcore-sdk-examples.csproj", "{43C5D168-2213-4791-BA95-06B17B924000}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -43,6 +55,18 @@ Global
 		{C85B3339-1FFA-409B-B799-40C2F1518672}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C85B3339-1FFA-409B-B799-40C2F1518672}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C85B3339-1FFA-409B-B799-40C2F1518672}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9172B954-6459-4DBF-91EF-18940BDA63AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9172B954-6459-4DBF-91EF-18940BDA63AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9172B954-6459-4DBF-91EF-18940BDA63AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9172B954-6459-4DBF-91EF-18940BDA63AE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0DC04CBE-C4BC-4DCE-9052-9472AC8E760E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0DC04CBE-C4BC-4DCE-9052-9472AC8E760E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0DC04CBE-C4BC-4DCE-9052-9472AC8E760E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0DC04CBE-C4BC-4DCE-9052-9472AC8E760E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{43C5D168-2213-4791-BA95-06B17B924000}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43C5D168-2213-4791-BA95-06B17B924000}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43C5D168-2213-4791-BA95-06B17B924000}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43C5D168-2213-4791-BA95-06B17B924000}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -55,5 +79,11 @@ Global
 		{B5BC8EC4-2269-42BE-8B3C-39084FC5D89C} = {F519CCA0-7FE9-4D51-9DFD-21187ED16B9B}
 		{03FFBA23-3E4E-4A46-B2C3-B7B006E49654} = {53C10150-607E-4EBB-9735-7F8C89243A7A}
 		{C85B3339-1FFA-409B-B799-40C2F1518672} = {03FFBA23-3E4E-4A46-B2C3-B7B006E49654}
+		{309523E7-4B3E-4D24-BCFB-8C10329E5D7E} = {DFD7B3C1-6C63-4482-AC1B-D990C19369CD}
+		{ED951F2E-A4A0-4BE1-AD62-36FE20D928DD} = {DFD7B3C1-6C63-4482-AC1B-D990C19369CD}
+		{5FA15DD5-47AC-4A4D-A9A5-80F9D0AAA533} = {DFD7B3C1-6C63-4482-AC1B-D990C19369CD}
+		{9172B954-6459-4DBF-91EF-18940BDA63AE} = {309523E7-4B3E-4D24-BCFB-8C10329E5D7E}
+		{0DC04CBE-C4BC-4DCE-9052-9472AC8E760E} = {309523E7-4B3E-4D24-BCFB-8C10329E5D7E}
+		{43C5D168-2213-4791-BA95-06B17B924000} = {ED951F2E-A4A0-4BE1-AD62-36FE20D928DD}
 	EndGlobalSection
 EndGlobal

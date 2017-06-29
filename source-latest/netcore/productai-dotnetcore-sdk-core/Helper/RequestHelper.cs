@@ -30,7 +30,7 @@ namespace MalongTech.ProductAI.Core
             var request = WebRequest.Create(api) as HttpWebRequest;
 
             if (!string.IsNullOrWhiteSpace(_request.UserAgent))
-                request.UserAgent = _request.UserAgent;
+                request.Headers["User-Agent"] = _request.UserAgent;
 
             request.Method = _httpMethodDics[(int)_request.RequestMethod];
 
@@ -40,7 +40,7 @@ namespace MalongTech.ProductAI.Core
             if (_request.Headers != null)
             {
                 foreach (var k in _request.Headers)
-                    request.Headers.Add(k.Key, k.Value);
+                    request.Headers[k.Key] = k.Value;
             }
 
             return request;
@@ -49,8 +49,7 @@ namespace MalongTech.ProductAI.Core
         private static void WriteRequestParas(HttpWebRequest request, string query)
         {
             byte[] buffer = System.Text.Encoding.UTF8.GetBytes(query);
-            request.ContentLength = buffer.Length;
-            using (var requestStream = request.GetRequestStream())
+            using (var requestStream = request.GetRequestStreamAsync().Result)
             {
                 requestStream.Write(buffer, 0, buffer.Length);
             }
@@ -58,8 +57,7 @@ namespace MalongTech.ProductAI.Core
 
         private static void WriteRequestParas(HttpWebRequest request, byte[] query)
         {
-            request.ContentLength = query.Length;
-            using (var requestStream = request.GetRequestStream())
+            using (var requestStream = request.GetRequestStreamAsync().Result)
             {
                 requestStream.Write(query, 0, query.Length);
             }
@@ -101,8 +99,6 @@ namespace MalongTech.ProductAI.Core
                     {
                         if (!string.IsNullOrWhiteSpace(_request.QueryString))
                             WriteRequestParas(request, _request.QueryString);
-                        else
-                            request.ContentLength = 0;
                     }
                     else
                     {
@@ -110,11 +106,22 @@ namespace MalongTech.ProductAI.Core
                     }
                 }
 
-                response = request.GetResponse() as HttpWebResponse;
+                response = request.GetResponseAsync().Result as HttpWebResponse;
             }
             catch (WebException ex)
             {
                 response = ex.Response as HttpWebResponse;
+            }
+            catch (AggregateException ex)
+            {
+                foreach (var e in ex.InnerExceptions)
+                {
+                    if (e is WebException)
+                    {
+                        response = ((WebException)e).Response as HttpWebResponse;
+                        break;
+                    }
+                }
             }
 
             httpResponse = new HttpResponse(response);
@@ -168,8 +175,6 @@ namespace MalongTech.ProductAI.Core
                     {
                         if (!string.IsNullOrWhiteSpace(_request.QueryString))
                             WriteRequestParas(request, _request.QueryString);
-                        else
-                            request.ContentLength = 0;
                     }
                     else
                     {
