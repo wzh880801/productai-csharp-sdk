@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp1.1</TargetFramework>
+    <RootNamespace>MalongTech.ProductAI.API</RootNamespace>
+    <Company>Malong Technology</Company>
+    <Authors>Zhong Wang</Authors>
+    <Description>The .net core sdk for Product AI</Description>
+    <Copyright>Copyrgiht @ Malong Technology 2017</Copyright>
+    <PackageProjectUrl>https://github.com/MalongTech/productai-csharp-sdk</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/MalongTech/productai-csharp-sdk.git</RepositoryUrl>
+    <PackageTags>MalongTech, ProductAI</PackageTags>
+    <PackageReleaseNotes>The first .net core version</PackageReleaseNotes>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="9.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\productai-dotnetcore-sdk-core\productai-dotnetcore-sdk-core.csproj" />
+  </ItemGroup>
+
+</Project>
