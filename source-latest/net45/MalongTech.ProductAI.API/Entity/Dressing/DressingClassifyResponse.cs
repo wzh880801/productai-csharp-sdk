@@ -8,5 +8,8 @@ namespace MalongTech.ProductAI.API.Entity
     {
         [JsonProperty("results")]
         public DressingClassifyResult[] Results { get; set; }
+
+        [JsonProperty("lables")]
+        public string[] Lables { get; set; }
     }
 }

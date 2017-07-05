@@ -11,6 +11,7 @@ namespace MalongTech.ProductAI.API.Entity
         : CallApiByImageFileBaseRequest<ClassifyResponse>
     {
         private static Dictionary<int, AIService> _classifyServiceDicts = typeof(ClassifyType).ToServiceDictionary();
+        private static Dictionary<int, string> _serviceTypeDicts = typeof(ServiceType).ToDictionary();
 
         public ClassifyByImageFileRequest(ClassifyType classifyType, string loc = "0-0-1-1")
             : base(_classifyServiceDicts[(int)classifyType].ServiceType,
@@ -33,6 +34,18 @@ namespace MalongTech.ProductAI.API.Entity
 
         public ClassifyByImageFileRequest(string serviceType, string serviceId, System.IO.FileInfo imageFile, string loc = "0-0-1-1")
             : this(serviceType, serviceId, loc)
+        {
+            this.ImageFile = imageFile;
+        }
+
+        public ClassifyByImageFileRequest(ServiceType serviceType, string serviceId, string loc = "0-0-1-1")
+            : base(_serviceTypeDicts[(int)serviceType], serviceId, loc)
+        {
+
+        }
+
+        public ClassifyByImageFileRequest(ServiceType serviceType, string serviceId, System.IO.FileInfo imageFile, string loc = "0-0-1-1")
+            : this(_serviceTypeDicts[(int)serviceType], serviceId, loc)
         {
             this.ImageFile = imageFile;
         }

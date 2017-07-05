@@ -49,10 +49,10 @@
     <Compile Include="Base\DataSetSingleModifyByUrlBaseRequest.cs" />
     <Compile Include="Base\SearchByImageFileBaseRequest.cs.cs" />
     <Compile Include="Base\SearchByImageUrlBaseRequest.cs" />
-    <Compile Include="Entity\ContentAnalysis\DressingClassifyResponse.cs" />
+    <Compile Include="Entity\Dressing\DressingClassifyResponse.cs" />
     <Compile Include="Entity\ContentAnalysis\ClassifyByImageFileRequest.cs" />
-    <Compile Include="Entity\ContentAnalysis\DressingClassifyByImageFileRequest.cs" />
-    <Compile Include="Entity\ContentAnalysis\DressingClassifyByImageUrlRequest.cs" />
+    <Compile Include="Entity\Dressing\DressingClassifyByImageFileRequest.cs" />
+    <Compile Include="Entity\Dressing\DressingClassifyByImageUrlRequest.cs" />
     <Compile Include="Entity\ContentAnalysis\ClassifyByImageUrlRequest.cs" />
     <Compile Include="Entity\ContentAnalysis\ClassifyResponse.cs" />
     <Compile Include="Entity\DataSet\DataSetBatchAddRequest.cs" />

@@ -59,6 +59,7 @@
     <Compile Include="Enum\LanguageType.cs" />
     <Compile Include="Enum\ResponseType.cs" />
     <Compile Include="Enum\DetectType.cs" />
+    <Compile Include="Enum\ServiceType.cs" />
     <Compile Include="Exceptions\ClientException.cs" />
     <Compile Include="Exceptions\ServerException.cs" />
     <Compile Include="Helper\EnumHelper.cs" />
