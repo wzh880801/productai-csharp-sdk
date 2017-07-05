@@ -38,13 +38,13 @@ namespace MalongTech.ProductAI.API.Entity
             this.Url = url;
         }
 
-        public DetectByImageUrlRequest(ServiceType serviceType, string serviceId, string loc = "0-0-1-1")
+        public DetectByImageUrlRequest(string serviceId, ServiceType serviceType = ServiceType.Detect, string loc = "0-0-1-1")
             : base(_serviceTypeDicts[(int)serviceType], serviceId, loc)
         {
 
         }
 
-        public DetectByImageUrlRequest(ServiceType serviceType, string serviceId, string url, string loc = "0-0-1-1")
+        public DetectByImageUrlRequest(string serviceId, string url, ServiceType serviceType = ServiceType.Detect, string loc = "0-0-1-1")
             : base(_serviceTypeDicts[(int)serviceType], serviceId, url, loc)
         {
 

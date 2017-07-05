@@ -50,11 +50,11 @@
     <Compile Include="Base\SearchByImageFileBaseRequest.cs.cs" />
     <Compile Include="Base\SearchByImageUrlBaseRequest.cs" />
     <Compile Include="Entity\Dressing\DressingClassifyResponse.cs" />
-    <Compile Include="Entity\ContentAnalysis\ClassifyByImageFileRequest.cs" />
+    <Compile Include="Entity\Classify\ClassifyByImageFileRequest.cs" />
     <Compile Include="Entity\Dressing\DressingClassifyByImageFileRequest.cs" />
     <Compile Include="Entity\Dressing\DressingClassifyByImageUrlRequest.cs" />
-    <Compile Include="Entity\ContentAnalysis\ClassifyByImageUrlRequest.cs" />
-    <Compile Include="Entity\ContentAnalysis\ClassifyResponse.cs" />
+    <Compile Include="Entity\Classify\ClassifyByImageUrlRequest.cs" />
+    <Compile Include="Entity\Classify\ClassifyResponse.cs" />
     <Compile Include="Entity\DataSet\DataSetBatchAddRequest.cs" />
     <Compile Include="Entity\DataSet\DataSetBatchDeleteRequest.cs" />
     <Compile Include="Entity\DataSet\DataSetModifyResponse.cs" />

@@ -38,13 +38,13 @@ namespace MalongTech.ProductAI.API.Entity
             this.ImageFile = imageFile;
         }
 
-        public DetectByImageFileRequest(ServiceType serviceType, string serviceId, string loc = "0-0-1-1")
+        public DetectByImageFileRequest(string serviceId, ServiceType serviceType = ServiceType.Detect, string loc = "0-0-1-1")
             : base(_serviceTypeDicts[(int)serviceType], serviceId, loc)
         {
 
         }
 
-        public DetectByImageFileRequest(ServiceType serviceType, string serviceId, System.IO.FileInfo imageFile, string loc = "0-0-1-1")
+        public DetectByImageFileRequest(string serviceId, System.IO.FileInfo imageFile, ServiceType serviceType = ServiceType.Detect, string loc = "0-0-1-1")
             : this(_serviceTypeDicts[(int)serviceType], serviceId, loc)
         {
             this.ImageFile = imageFile;
