@@ -1,5 +1,6 @@
-# .NET SDK for ProductAI
-.NET SDK for ProductAI
+﻿# .NET SDK for ProductAI
+
+[![Build status](https://ci.appveyor.com/api/projects/status/34b787k7hrbk59q6/branch/master?svg=true)](https://ci.appveyor.com/project/wzh880801/productai-csharp-sdk/branch/master)
 
 ## ProductAI: 
 <br>For more details about ProductAI, view 
