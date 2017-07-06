@@ -13,6 +13,8 @@ namespace MalongTech.ProductAI.API
     public abstract class CallApiByImageUrlBaseRequest<T> : BaseRequest<T>
         where T : BaseResponse
     {
+        private static Dictionary<int, string> _serviceTypeDicts = typeof(ServiceType).ToDictionary();
+
         private string _serviceType = "";
         private string _serviceId = "";
 
@@ -25,6 +27,14 @@ namespace MalongTech.ProductAI.API
             set
             {
                 _serviceType = value;
+            }
+        }
+
+        public ServiceType ServiceTypeValue
+        {
+            set
+            {
+                this._serviceType = _serviceTypeDicts[(int)value];
             }
         }
 
