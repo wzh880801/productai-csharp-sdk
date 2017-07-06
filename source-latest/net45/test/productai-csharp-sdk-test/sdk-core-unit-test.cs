@@ -17,7 +17,7 @@ namespace MalongTech.ProductAI.Test
 
             var detectDicts = typeof(DetectType).ToServiceDictionary();
             Assert.AreEqual(7, detectDicts.Keys.Count);
-            Assert.AreEqual("detect_vehicle", detectDicts[(int)DetectType.Vehicle].ServiceType);
+            Assert.AreEqual("detect", detectDicts[(int)DetectType.Vehicle].ServiceType);
 
             var langDicts = typeof(LanguageType).ToDictionary();
             Assert.AreEqual("zh-Hans-CN", langDicts[(int)LanguageType.Chinese]);
