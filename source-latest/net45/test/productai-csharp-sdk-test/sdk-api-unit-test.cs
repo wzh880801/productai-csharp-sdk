@@ -37,19 +37,5 @@ namespace MalongTech.ProductAI.Test
                 Assert.AreEqual("1002", ex.ErrorCode);
             }
         }
-
-        [TestMethod]
-        public void DetectTest()
-        {
-            client.Profile.AccessKeyId = ConfigurationManager.AppSettings["AccessKeyId"];
-            client.Profile.SecretKey = ConfigurationManager.AppSettings["SecretKey"];
-
-            var request = new DetectByImageUrlRequest(DetectType.Cloth)
-            {
-                Url = "http://productai.cn/img/f10.jpg"
-            };
-            var response = client.GetResponse(request);
-            Assert.AreEqual(200, (int)response.StatusCode);
-        }
     }
 }
