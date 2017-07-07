@@ -1,8 +1,8 @@
 ﻿# ProductAI® SDK for .NET & .NET Core
 
 [![Build status](https://ci.appveyor.com/api/projects/status/34b787k7hrbk59q6/branch/master?svg=true)](https://ci.appveyor.com/project/wzh880801/productai-csharp-sdk/branch/master)
-[![NuGet](https://img.shields.io/nuget/v/MalongTech.ProductAI.API.svg)]()
-[![NuGet](https://img.shields.io/nuget/dt/MalongTech.ProductAI.API.svg)]()
+[![NuGet](https://img.shields.io/nuget/v/MalongTech.ProductAI.API.svg)](https://www.nuget.org/packages/MalongTech.ProductAI.API/)
+[![NuGet](https://img.shields.io/nuget/dt/MalongTech.ProductAI.API.svg)](https://www.nuget.org/packages/MalongTech.ProductAI.API/)
 
 ## ProductAI: 
 <br>For more details about ProductAI, view 
