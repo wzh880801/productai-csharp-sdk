@@ -10,7 +10,7 @@ namespace MalongTech.ProductAI.API.Entity
         : CallApiByImageFileBaseRequest<IntelligentFilterResponse>
     {
         public IntelligentFilterByImageFileRequest(string loc = "0-0-1-1")
-            : base("classify_art", "_0000015")
+            : base("filter", "_0000015")
         {
             this.Loc = loc;
         }
