@@ -22,7 +22,7 @@ namespace MalongTech.ProductAI.Core
         /// 通用图片内容分析与标注
         /// classify_general
         /// </summary>
-        [ServiceDescription(Name = "通用图片内容分析与标注", ServiceType = "classify", ServiceId = "_0000044")]
+        [ServiceDescription(Name = "通用图片内容分析与标注", ServiceType = "classify", ServiceId = "_0000056")]
         General
     }
 }

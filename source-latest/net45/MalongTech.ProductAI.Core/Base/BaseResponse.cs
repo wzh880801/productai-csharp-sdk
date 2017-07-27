@@ -42,9 +42,15 @@ namespace MalongTech.ProductAI.Core
         [JsonProperty("request_id")]
         public string RequestId { get; set; }
 
+        /// <summary>
+        /// error code
+        /// </summary>
         [JsonProperty("error_code")]
         public int ErrorCode { get; set; }
 
+        /// <summary>
+        /// error message info
+        /// </summary>
         [JsonProperty("message")]
         public string Message { get; set; }
 

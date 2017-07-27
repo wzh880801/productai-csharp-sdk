@@ -166,9 +166,14 @@ namespace MalongTech.ProductAI.Core
                 _t.StatusCode = httpResponse.StatusCode;
 
                 if ((int)_t.StatusCode >= 500)
-                    throw new ServerException(string.Format("{0}", _t.ErrorCode), string.Format("{0}-{1}", _t.ErrorMsg, _t.Message));
+                    throw new ServerException(string.Format("{0}", _t.ErrorCode),
+                        string.IsNullOrWhiteSpace(_t.ErrorMsg) ? _t.Message :
+                        string.Format("{0}-{1}", _t.ErrorMsg, _t.Message));
                 else if ((int)_t.StatusCode >= 400)
-                    throw new ClientException(string.Format("{0}", _t.ErrorCode), string.Format("{0}-{1}", _t.ErrorMsg, _t.Message), _t.RequestId);
+                    throw new ClientException(string.Format("{0}", _t.ErrorCode),
+                        string.IsNullOrWhiteSpace(_t.ErrorMsg) ? _t.Message :
+                        string.Format("{0}-{1}", _t.ErrorMsg, _t.Message), 
+                        _t.RequestId);
 
                 return _t;
             }
