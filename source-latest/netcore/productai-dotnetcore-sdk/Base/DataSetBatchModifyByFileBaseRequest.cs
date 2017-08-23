@@ -4,6 +4,7 @@ using MalongTech.ProductAI.Core;
 
 namespace MalongTech.ProductAI.API
 {
+    [IgnoreExtraParas]
     public abstract class DataSetBatchModifyByFileBaseRequest<T> : BaseRequest<T>
         where T : BaseResponse
     {

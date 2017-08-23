@@ -5,6 +5,7 @@ using MalongTech.ProductAI.Core;
 
 namespace MalongTech.ProductAI.API
 {
+    [IgnoreExtraParas]
     public abstract class DataSetSingleModifyByUrlBaseRequest<T> : BaseRequest<T>
         where T : BaseResponse
     {

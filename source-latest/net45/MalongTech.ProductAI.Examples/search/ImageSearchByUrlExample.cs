@@ -5,11 +5,11 @@ using MalongTech.ProductAI.API.Entity;
 
 namespace MalongTech.ProductAI.Examples
 {
-    class ImageSearchExample : IExample
+    class ImageSearchByUrlExample : IExample
     {
         public void Run(IWebClient client)
         {
-            Console.WriteLine("==>  Demo - 通用图像搜索  <==");
+            Console.WriteLine("==>  Demo - 通过图片Url进行图像搜索  <==");
             Console.WriteLine("See https://api-doc.productai.cn/doc/pai.html#通用图像搜索 for details.\r\n");
 
             //复杂Tag查询示例
@@ -26,12 +26,18 @@ namespace MalongTech.ProductAI.Examples
                 Tag = andTag
             };
 
-            var request = new ImageSearchByImageFileRequest("k7h9fail")
+            var request = new ImageSearchByImageUrlRequest("k7h9fail")
             {
-                ImageFile = new System.IO.FileInfo(@".\Classify\f10.jpg"),
+                Url = "http://static.esobing.com/images/dog.jpg",
                 Language = LanguageType.Chinese,
                 SearchTag = searchTag
             };
+
+            // you can pass the extra paras to the request
+            // 如果不需要传递额外的参数，请注释掉如下3行
+            request.Options.Add("para1", "1");
+            request.Options.Add("para2", "中文");
+            request.Options.Add("para3", "value3");
 
             try
             {

@@ -92,6 +92,15 @@ namespace MalongTech.ProductAI.API
                         }
                     }
                 }
+
+                if (this.Options != null && this.Options.Count > 0)
+                {
+                    foreach (var para in this.Options)
+                    {
+                        list.Add(string.Format("{0}={1}", para.Key, WebQueryHelper.UrlEncode(para.Value)));
+                    }
+                }
+
                 return string.Join("&", list);
                 //return string.Format("url={0}&loc={1}", System.Web.HttpUtility.UrlEncode(this.Url), this.Loc);
             }

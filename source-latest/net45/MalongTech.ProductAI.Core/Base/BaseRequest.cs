@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace MalongTech.ProductAI.Core
 {
@@ -9,6 +10,9 @@ namespace MalongTech.ProductAI.Core
         private static Dictionary<int, string> _contentTypeDicts = EnumHelper.ToDictionary(typeof(ContentType));
         private static Dictionary<int, string> _languageDicts = typeof(LanguageType).ToDictionary();
         private Dictionary<string, string> _headers = new Dictionary<string, string>();
+
+        // built-in paras
+        private List<string> _builtInParas = new List<string>() { "url", "loc", "count", "search", "tags", "urls_to_delete", "image_url", "meta", "urls_to_add" };
 
         /// <summary>
         /// domain
@@ -101,6 +105,27 @@ namespace MalongTech.ProductAI.Core
         {
             this.SetHeader("Accept-Encoding", "gzip, deflate");
             this.Language = LanguageType.English;
+        }
+
+        private Dictionary<string, string> _options = new Dictionary<string, string>();
+
+        /// <summary>
+        /// The extra paras you can pass to the request
+        /// </summary>
+        public Dictionary<string, string> Options
+        {
+            get
+            {
+                if (_options == null || _options.Count == 0)
+                    return _options;
+
+                _options = _options.Where(p => !_builtInParas.Contains(p.Key.ToLower())).ToDictionary(p => p.Key, p => p.Value);
+                return _options;
+            }
+            set
+            {
+                _options = value;
+            }
         }
     }
 }

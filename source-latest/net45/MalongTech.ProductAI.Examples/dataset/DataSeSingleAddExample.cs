@@ -5,38 +5,27 @@ using MalongTech.ProductAI.API.Entity;
 namespace MalongTech.ProductAI.Examples
 {
     /// <summary>
-    /// 场景分析与标注
-    /// https://api-doc.productai.cn/doc/pai.html#场景分析与标注
+    /// 数据集操作
+    /// https://api-doc.productai.cn/doc/pai.html#向数据集增加单条数据
     /// </summary>
-    class ClassifyPlaceExample : IExample
+    class DataSeSingleAddExample : IExample
     {
         public void Run(IWebClient client)
         {
-            Console.WriteLine("==>  Demo - 场景分析与标注  <==");
-            Console.WriteLine("See https://api-doc.productai.cn/doc/pai.html#场景分析与标注 for details.\r\n");
+            Console.WriteLine("==>  Demo - 数据集操作  <==");
+            Console.WriteLine("See https://api-doc.productai.cn/doc/pai.html#向数据集增加单条数据 for details.\r\n");
 
-            var request = new ClassifyByImageFileRequest(ClassifyType.Place)
+            var request = new DataSetSingleAddByImageUrlRequest("lqn2jj6z")
             {
-                ImageFile = new System.IO.FileInfo(@".\ContentAnalysis\f10.jpg"),
-                Language = LanguageType.Chinese
+                ImageUrl = "http://static.esobing.com/images/dog.jpg"
             };
-
-            // use image url
-            //var request = new PlaceClassifyByImageUrlRequest
-            //{
-            //    Url = "http://productai.cn/img/f10.jpg",
-            //    Language = LanguageType.Chinese
-            //};
 
             try
             {
                 var response = client.GetResponse(request);
 
                 Console.WriteLine("==========================Result==========================");
-                foreach (var r in response.Results)
-                {
-                    Console.WriteLine("{0}\t\t{1}", r.Category, r.Score);
-                }
+                Console.WriteLine("LastModifiedTime: {0}", response.LastModifiedTime);
                 Console.WriteLine("==========================Result==========================");
             }
             catch (ServerException ex)

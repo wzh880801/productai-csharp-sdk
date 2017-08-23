@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Attribute\EnumDescriptionAttribute.cs" />
+    <Compile Include="Attribute\IgnoreExtraParasAttribute.cs" />
     <Compile Include="Attribute\ParaSignAttribute.cs" />
     <Compile Include="Attribute\ServiceDescriptionAttribute.cs" />
     <Compile Include="Base\BaseRequest.cs" />

@@ -5,38 +5,27 @@ using MalongTech.ProductAI.API.Entity;
 namespace MalongTech.ProductAI.Examples
 {
     /// <summary>
-    /// 3C电器检测与定位
-    /// https://api-doc.productai.cn/doc/pai.html#3C电器检测与定位
+    /// 数据集操作
+    /// https://api-doc.productai.cn/doc/pai.html#向数据集增加多条数据
     /// </summary>
-    class DetectExample : IExample
+    class DataSetBatchAddFilesExample : IExample
     {
         public void Run(IWebClient client)
         {
-            Console.WriteLine("==>  Demo - 3C电器检测与定位  <==");
-            Console.WriteLine("See https://api-doc.productai.cn/doc/pai.html#3C电器检测与定位 for details.\r\n");
+            Console.WriteLine("==>  Demo - 数据集操作  <==");
+            Console.WriteLine("See https://api-doc.productai.cn/doc/pai.html#向数据集增加多条数据 for details.\r\n");
 
-            var request = new DetectByImageFileRequest(DetectType.ThreeCAndElectronics)
+            var request = new DataSetBatchAddRequest("lqn2jj6z")
             {
-                ImageFile = new System.IO.FileInfo(@".\Detect\iphone.jpg"),
-                Language = LanguageType.Chinese
+                CsvFile = new System.IO.FileInfo(@".\dataset\example.csv")
             };
-
-            // use image url
-            //var request = new Detect3CElectronicsByImageUrlRequest
-            //{
-            //    Url = "http://productai.cn/img/f12.jpg",
-            //    Language = LanguageType.Chinese
-            //};
 
             try
             {
                 var response = client.GetResponse(request);
 
                 Console.WriteLine("==========================Result==========================");
-                foreach (var r in response.DetectedBoxes)
-                {
-                    Console.WriteLine("{0}\t\t{1}", r.Type, r.Score);
-                }
+                Console.WriteLine("LastModifiedTime: {0}", response.LastModifiedTime);
                 Console.WriteLine("==========================Result==========================");
             }
             catch (ServerException ex)
@@ -47,7 +36,7 @@ namespace MalongTech.ProductAI.Examples
             }
             catch (ClientException ex)
             {
-                Console.WriteLine("ClientException happened: \r\n\tRequestId: {0}\r\n\tErrorCode:\r\n\t{1}\r\n\tErrorMessage: {2}",
+                Console.WriteLine("ClientException happened: \r\n\tRequestId: {0}\r\n\tErrorCode: {1}\r\n\tErrorMessage: {2}",
                     ex.RequestId,
                     ex.ErrorCode,
                     ex.ErrorMessage);

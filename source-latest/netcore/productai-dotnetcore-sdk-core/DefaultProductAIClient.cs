@@ -124,6 +124,15 @@ namespace MalongTech.ProductAI.Core
                     }
                 }
 
+                var ignoreParaAtt = request.GetType().GetTypeInfo().GetCustomAttribute(typeof(IgnoreExtraParasAttribute));
+                if (ignoreParaAtt == null && request.Options != null && request.Options.Count > 0)
+                {
+                    foreach (var para in request.Options)
+                    {
+                        dics.Add(para.Key, para.Value);
+                    }
+                }
+
                 request.SetHeader("x-ca-signature", SignnatureHelper.Signnature(_profile.SecretKey, dics));
 
                 request.Host = this._host;

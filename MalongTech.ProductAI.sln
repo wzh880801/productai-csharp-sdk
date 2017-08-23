@@ -27,11 +27,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "examples", "examples", "{ED
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{5FA15DD5-47AC-4A4D-A9A5-80F9D0AAA533}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "productai-dotnetcore-sdk-core", "source-latest\netcore\productai-dotnetcore-sdk-core\productai-dotnetcore-sdk-core.csproj", "{9172B954-6459-4DBF-91EF-18940BDA63AE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "productai-dotnetcore-sdk-core", "source-latest\netcore\productai-dotnetcore-sdk-core\productai-dotnetcore-sdk-core.csproj", "{9172B954-6459-4DBF-91EF-18940BDA63AE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "productai-dotnetcore-sdk", "source-latest\netcore\productai-dotnetcore-sdk\productai-dotnetcore-sdk.csproj", "{0DC04CBE-C4BC-4DCE-9052-9472AC8E760E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "productai-dotnetcore-sdk", "source-latest\netcore\productai-dotnetcore-sdk\productai-dotnetcore-sdk.csproj", "{0DC04CBE-C4BC-4DCE-9052-9472AC8E760E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "productai-dotnetcore-sdk-examples", "source-latest\netcore\productai-dotnetcore-sdk-examples\productai-dotnetcore-sdk-examples.csproj", "{43C5D168-2213-4791-BA95-06B17B924000}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "productai-dotnetcore-sdk-examples", "source-latest\netcore\productai-dotnetcore-sdk-examples\productai-dotnetcore-sdk-examples.csproj", "{43C5D168-2213-4791-BA95-06B17B924000}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
