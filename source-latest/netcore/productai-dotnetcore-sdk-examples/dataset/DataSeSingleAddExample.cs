@@ -4,17 +4,20 @@ using MalongTech.ProductAI.API.Entity;
 
 namespace MalongTech.ProductAI.Examples
 {
-    class SmartFilterExample : IExample
+    /// <summary>
+    /// 数据集操作
+    /// https://api-doc.productai.cn/doc/pai.html#向数据集增加单条数据
+    /// </summary>
+    class DataSeSingleAddExample : IExample
     {
         public void Run(IWebClient client)
         {
-            Console.WriteLine("==>  Demo - 智能滤镜  <==");
-            Console.WriteLine("See https://api-doc.productai.cn/doc/pai.html#智能滤镜 for details.\r\n");
+            Console.WriteLine("==>  Demo - 数据集操作  <==");
+            Console.WriteLine("See https://api-doc.productai.cn/doc/pai.html#向数据集增加单条数据 for details.\r\n");
 
-            var request = new IntelligentFilterByImageFileRequest()
+            var request = new DataSetSingleAddByImageUrlRequest("lqn2jj6z")
             {
-                ImageFile = new System.IO.FileInfo(@".\ContentAnalysis\f10.jpg"),
-                Language = LanguageType.Chinese,
+                ImageUrl = "http://static.esobing.com/images/dog.jpg"
             };
 
             try
@@ -22,10 +25,7 @@ namespace MalongTech.ProductAI.Examples
                 var response = client.GetResponse(request);
 
                 Console.WriteLine("==========================Result==========================");
-                foreach (var r in response.Results)
-                {
-                    Console.WriteLine("{0}\t\t{1}\t\t{2}", r.ImageUrl, r.Score, r.Tag);
-                }
+                Console.WriteLine("LastModifiedTime: {0}", response.LastModifiedTime);
                 Console.WriteLine("==========================Result==========================");
             }
             catch (ServerException ex)

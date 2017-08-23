@@ -16,13 +16,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Classify\f10.jpg">
+    <None Update="classify\f10.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="DataSet\example.csv">
+    <None Update="dataset\example.csv">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Detect\iphone.jpg">
+    <None Update="detect\iphone.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>

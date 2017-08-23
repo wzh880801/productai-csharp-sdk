@@ -42,19 +42,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ContentAnalysis\classify_place_cls.cs" />
-    <Compile Include="DataSet\dataset_management.cs" />
-    <Compile Include="Detect\detect_example.cs" />
+    <Compile Include="classify\ClassifyByUrlExample.cs" />
+    <Compile Include="classify\ClassifyByFileExample.cs" />
+    <Compile Include="dataset\DataSeSingleAddExample.cs" />
+    <Compile Include="dataset\DataSetBatchDeleteFilesExample.cs" />
+    <Compile Include="dataset\DataSetBatchAddFilesExample.cs" />
+    <Compile Include="detect\DetectByUrlExample.cs" />
+    <Compile Include="detect\DetectByFileExample.cs" />
+    <Compile Include="filter\FilterByUrlExample.cs" />
     <Compile Include="IExample.cs" />
-    <Compile Include="ImageSearch\image_search.cs" />
+    <Compile Include="search\ImageSearchByUrlExample.cs" />
+    <Compile Include="search\ImageSearchByFileExample.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SmartFilter\smart_filter.cs" />
+    <Compile Include="filter\FilterByFileExample.cs" />
     <Compile Include="Useage.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="DataSet\example.csv">
+    <None Include="dataset\example.csv">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
@@ -69,10 +75,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ContentAnalysis\f10.jpg">
+    <Content Include="classify\f10.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Detect\iphone.jpg">
+    <Content Include="detect\iphone.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

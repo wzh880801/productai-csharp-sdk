@@ -103,6 +103,15 @@ namespace MalongTech.ProductAI.API
                         }
                     }
                 }
+
+                if (this.Options != null && this.Options.Count > 0)
+                {
+                    foreach (var para in this.Options)
+                    {
+                        options.Add(para.Key, para.Value);
+                    }
+                }
+
                 return FileHelper.GetMultipartBytes(this.ImageFile, _boundary, options, "search");
             }
         }

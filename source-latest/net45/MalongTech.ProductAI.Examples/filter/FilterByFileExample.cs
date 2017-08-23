@@ -4,28 +4,34 @@ using MalongTech.ProductAI.API.Entity;
 
 namespace MalongTech.ProductAI.Examples
 {
-    /// <summary>
-    /// 数据集操作
-    /// https://api-doc.productai.cn/doc/pai.html#向数据集增加多条数据
-    /// </summary>
-    class DataSetManagementExample : IExample
+    class FilterByFileExample : IExample
     {
         public void Run(IWebClient client)
         {
-            Console.WriteLine("==>  Demo - 数据集操作  <==");
-            Console.WriteLine("See https://api-doc.productai.cn/doc/pai.html#向数据集增加多条数据 for details.\r\n");
+            Console.WriteLine("==>  Demo - 智能滤镜  <==");
+            Console.WriteLine("See https://api-doc.productai.cn/doc/pai.html#智能滤镜 for details.\r\n");
 
-            var request = new DataSetBatchAddRequest("<your imageset id>")
+            var request = new IntelligentFilterByImageFileRequest()
             {
-                CsvFile = new System.IO.FileInfo(@".\DataSet\example.csv")
+                ImageFile = new System.IO.FileInfo(@".\classify\f10.jpg"),
+                Language = LanguageType.Chinese,
             };
+
+            // you can pass the extra paras to the request
+            // 如果不需要传递额外的参数，请注释掉如下3行
+            request.Options.Add("para1", "1");
+            request.Options.Add("para2", "中文");
+            request.Options.Add("para3", "value3");
 
             try
             {
                 var response = client.GetResponse(request);
 
                 Console.WriteLine("==========================Result==========================");
-                Console.WriteLine("LastModifiedTime: {0}", response.LastModifiedTime);
+                foreach (var r in response.Results)
+                {
+                    Console.WriteLine("{0}\t\t{1}\t\t{2}", r.ImageUrl, r.Score, r.Tag);
+                }
                 Console.WriteLine("==========================Result==========================");
             }
             catch (ServerException ex)
