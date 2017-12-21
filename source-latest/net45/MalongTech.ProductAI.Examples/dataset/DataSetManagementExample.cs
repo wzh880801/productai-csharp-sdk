@@ -5,6 +5,7 @@ using MalongTech.ProductAI.API.Entity;
 namespace MalongTech.ProductAI.Examples
 {
     /// <summary>
+    /// Dataset management apis
     /// 数据集操作: 检索、新增、更新、删除
     /// </summary>
     class DataSetManagementExample : IExample
@@ -28,6 +29,8 @@ namespace MalongTech.ProductAI.Examples
 
         private string _dataSetId = "";
 
+        // Add a new dataset 
+        // 新增一个数据集
         private void Add(IWebClient client)
         {
             var request = new CreateDataSetRequest
@@ -66,6 +69,8 @@ namespace MalongTech.ProductAI.Examples
             }
         }
 
+        // get the detail information of a dataset
+        // 获取一个数据集的详细信息
         private void Get(IWebClient client)
         {
             var request = new GetDataSetInfoRequest
@@ -100,6 +105,8 @@ namespace MalongTech.ProductAI.Examples
             }
         }
 
+        // update a existing dataset
+        // 更新dataset的信息（名称和描述）
         private void Update(IWebClient client)
         {
             var request = new UpdateDataSetRequest
@@ -137,6 +144,8 @@ namespace MalongTech.ProductAI.Examples
             }
         }
 
+        // delete a dataset
+        // 删除一个数据集
         private void Delete(IWebClient client)
         {
             var request = new DeleteDataSetRequest
