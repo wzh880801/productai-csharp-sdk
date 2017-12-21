@@ -7,8 +7,8 @@ namespace MalongTech.ProductAI.API.Entity
     /// 向数据集增加单条数据
     /// <para>https://api-doc.productai.cn/doc/pai.html#向数据集增加单条数据</para>
     /// </summary>
-    public class DataSetSingleAddByImageUrlRequest 
-        : DataSetSingleModifyByUrlBaseRequest<DataSetModifyResponse>
+    public class DataSetSingleAddByImageUrlRequest
+        : DataSetSingleModifyByUrlBaseRequest<DataSetBaseResponse>
     {
         public DataSetSingleAddByImageUrlRequest(string imageSetId, List<string> tags = null, string metaId = null)
             : base(imageSetId, tags, metaId)

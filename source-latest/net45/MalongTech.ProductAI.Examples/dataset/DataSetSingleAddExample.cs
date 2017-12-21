@@ -8,7 +8,7 @@ namespace MalongTech.ProductAI.Examples
     /// 数据集操作
     /// https://api-doc.productai.cn/doc/pai.html#向数据集增加单条数据
     /// </summary>
-    class DataSeSingleAddExample : IExample
+    class DataSetSingleAddExample : IExample
     {
         public void Run(IWebClient client)
         {

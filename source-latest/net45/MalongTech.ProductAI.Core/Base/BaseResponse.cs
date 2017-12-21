@@ -8,7 +8,24 @@ namespace MalongTech.ProductAI.Core
     {
         public virtual ResponseType ResponseType { get; } = ResponseType.Json;
 
+        /// <summary>
+        /// the json string returned in Base64String
+        /// </summary>
         public virtual string ResponseBase64String { get; set; }
+
+        /// <summary>
+        /// the json string returned
+        /// </summary>
+        public virtual string ResponseJsonString
+        {
+            get
+            {
+                if (!string.IsNullOrWhiteSpace(this.ResponseBase64String))
+                    return System.Text.Encoding.UTF8.GetString(Convert.FromBase64String(this.ResponseBase64String));
+
+                return null;
+            }
+        }
 
         [JsonIgnore]
         public virtual WebHeaderCollection Headers { get; set; }
@@ -38,6 +55,7 @@ namespace MalongTech.ProductAI.Core
 
         /// <summary>
         /// Unique request id
+        /// 本次调用的唯一ID，可以用于和ProductAI团队进行联调分析
         /// </summary>
         [JsonProperty("request_id")]
         public string RequestId { get; set; }

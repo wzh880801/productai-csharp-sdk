@@ -67,7 +67,7 @@ namespace MalongTech.ProductAI.API
             }
         }
 
-        private string _boundary = "";
+        private string _boundary = FileHelper.GetBoundary();
 
         public override byte[] QueryBytes
         {
@@ -134,7 +134,7 @@ namespace MalongTech.ProductAI.API
 
         public CallApiByImageFileBaseRequest()
         {
-
+            this._boundary = FileHelper.GetBoundary();
         }
 
         /// <summary>
@@ -143,7 +143,7 @@ namespace MalongTech.ProductAI.API
         /// <param name="serviceType">the service type</param>
         /// <param name="serviceId">the service id</param>
         public CallApiByImageFileBaseRequest(string serviceType, string serviceId)
-        : base()
+        : this()
         {
             if (string.IsNullOrWhiteSpace(serviceType))
                 throw new ArgumentNullException(nameof(serviceType));
@@ -152,8 +152,6 @@ namespace MalongTech.ProductAI.API
 
             this._serviceType = serviceType;
             this._serviceId = serviceId;
-
-            this._boundary = FileHelper.GetBoundary();
         }
 
         /// <summary>

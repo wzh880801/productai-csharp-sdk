@@ -15,10 +15,22 @@ namespace MalongTech.ProductAI.API.Entity
 
         }
 
+        public DressingClassifyByImageFileRequest(string serviceType, string serviceId, string loc = "0-0-1-1")
+            : base(serviceType, serviceId, loc)
+        {
+
+        }
+
         public DressingClassifyByImageFileRequest(System.IO.FileInfo imageFile, string loc = "0-0-1-1")
             : this(loc)
         {
             this.ImageFile = imageFile;
+        }
+
+        public DressingClassifyByImageFileRequest(string serviceType, string serviceId, System.IO.FileInfo imageFile, string loc = "0-0-1-1")
+            : base(serviceType, serviceId, imageFile, loc)
+        {
+
         }
     }
 }

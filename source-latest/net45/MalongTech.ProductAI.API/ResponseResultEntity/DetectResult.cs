@@ -11,6 +11,9 @@ namespace MalongTech.ProductAI.API.Entity
         [JsonProperty("type")]
         public string Type { get; set; }
 
+        [JsonProperty("puid")]
+        public string Puid { get; set; }
+
         [JsonProperty("score")]
         public decimal Score { get; set; }
     }

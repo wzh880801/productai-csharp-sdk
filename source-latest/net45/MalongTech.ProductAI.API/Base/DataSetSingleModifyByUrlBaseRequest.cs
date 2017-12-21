@@ -19,31 +19,31 @@ namespace MalongTech.ProductAI.API
             }
         }
 
-        public override string QueryString
-        {
-            get
-            {
-                var list = new List<string>();
-                var ps = this.GetType().GetProperties();
-                foreach (var p in ps)
-                {
-                    var ca = p.GetCustomAttribute(typeof(ParaSignAttribute));
-                    if (ca != null)
-                    {
-                        var _ca = ca as ParaSignAttribute;
-                        var value = p.GetValue(this);
-                        if (p.PropertyType == typeof(System.String))
-                        {
-                            if (value != null && !string.IsNullOrWhiteSpace(value.ToString()))
-                            {
-                                list.Add(string.Format("{0}={1}", _ca.Name, _ca.IsNeedUrlEncode ? WebQueryHelper.UrlEncode(value.ToString()) : value));
-                            }
-                        }
-                    }
-                }
-                return string.Join("&", list);
-            }
-        }
+        //public override string QueryString
+        //{
+        //    get
+        //    {
+        //        var list = new List<string>();
+        //        var ps = this.GetType().GetProperties();
+        //        foreach (var p in ps)
+        //        {
+        //            var ca = p.GetCustomAttribute(typeof(ParaSignAttribute));
+        //            if (ca != null)
+        //            {
+        //                var _ca = ca as ParaSignAttribute;
+        //                var value = p.GetValue(this);
+        //                if (p.PropertyType == typeof(System.String))
+        //                {
+        //                    if (value != null && !string.IsNullOrWhiteSpace(value.ToString()))
+        //                    {
+        //                        list.Add(string.Format("{0}={1}", _ca.Name, _ca.IsNeedUrlEncode ? WebQueryHelper.UrlEncode(value.ToString()) : value));
+        //                    }
+        //                }
+        //            }
+        //        }
+        //        return string.Join("&", list);
+        //    }
+        //}
 
         [ParaSign("image_url", true)]
         public string ImageUrl { get; set; }

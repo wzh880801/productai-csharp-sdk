@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -44,7 +47,8 @@
   <ItemGroup>
     <Compile Include="classify\ClassifyByUrlExample.cs" />
     <Compile Include="classify\ClassifyByFileExample.cs" />
-    <Compile Include="dataset\DataSeSingleAddExample.cs" />
+    <Compile Include="dataset\DataSetManagementExample.cs" />
+    <Compile Include="dataset\DataSetSingleAddExample.cs" />
     <Compile Include="dataset\DataSetBatchDeleteFilesExample.cs" />
     <Compile Include="dataset\DataSetBatchAddFilesExample.cs" />
     <Compile Include="detect\DetectByUrlExample.cs" />
@@ -56,6 +60,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="filter\FilterByFileExample.cs" />
+    <Compile Include="service\ServiceManagementExample.cs" />
     <Compile Include="Useage.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -63,6 +68,7 @@
     <None Include="dataset\example.csv">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MalongTech.ProductAI.API\productai-csharp-sdk.csproj">

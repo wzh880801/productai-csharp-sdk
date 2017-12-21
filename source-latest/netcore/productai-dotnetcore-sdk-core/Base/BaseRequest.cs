@@ -1,6 +1,7 @@
 ﻿using System;
-using System.Linq;
 using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
 
 namespace MalongTech.ProductAI.Core
 {
@@ -10,7 +11,7 @@ namespace MalongTech.ProductAI.Core
         private static Dictionary<int, string> _contentTypeDicts = EnumHelper.ToDictionary(typeof(ContentType));
         private static Dictionary<int, string> _languageDicts = typeof(LanguageType).ToDictionary();
         private Dictionary<string, string> _headers = new Dictionary<string, string>();
-        
+
         // built-in paras
         private List<string> _builtInParas = new List<string>() { "url", "loc", "count", "search", "tags", "urls_to_delete", "image_url", "meta", "urls_to_add" };
 
@@ -22,7 +23,7 @@ namespace MalongTech.ProductAI.Core
         /// <summary>
         /// User Agent. You can override this property to use your own UA
         /// </summary>
-        public virtual string UserAgent { get; } = "Product AI C# SDK 1.0";
+        public virtual string UserAgent { get; } = "Product AI C# SDK - NET_CORE 2.0.5";
 
         public HttpMethod RequestMethod { get; set; } = HttpMethod.POST;
 
@@ -41,7 +42,55 @@ namespace MalongTech.ProductAI.Core
             }
         }
 
-        public abstract string QueryString { get; }
+        /// <summary>
+        /// When post file in request, you should override this and set it to null
+        /// </summary>
+        public virtual string QueryString
+        {
+            get
+            {
+                var list = new List<string>();
+                var ps = this.GetType().GetProperties();
+                foreach (var p in ps)
+                {
+                    var ca = p.GetCustomAttribute(typeof(ParaSignAttribute));
+                    if (ca != null)
+                    {
+                        var _ca = ca as ParaSignAttribute;
+                        var value = p.GetValue(this);
+                        if (p.PropertyType == typeof(System.String))
+                        {
+                            if (value != null && !string.IsNullOrWhiteSpace(value.ToString()))
+                            {
+                                list.Add(string.Format("{0}={1}", _ca.Name, _ca.IsNeedUrlEncode ? WebQueryHelper.UrlEncode(value.ToString()) : value));
+                            }
+                        }
+                        else if (p.PropertyType == typeof(int?))
+                        {
+                            var v = value as int?;
+                            if (v != null)
+                                list.Add(string.Format("{0}={1}", _ca.Name, v));
+                        }
+                        else if (p.PropertyType == typeof(double?))
+                        {
+                            var v = value as double?;
+                            if (v != null)
+                                list.Add(string.Format("{0}={1}", _ca.Name, v));
+                        }
+                    }
+                }
+
+                if (this.Options != null && this.Options.Count > 0)
+                {
+                    foreach (var para in this.Options)
+                    {
+                        list.Add(string.Format("{0}={1}", para.Key, WebQueryHelper.UrlEncode(para.Value)));
+                    }
+                }
+
+                return string.Join("&", list);
+            }
+        }
 
         /// <summary>
         /// When you are using POST, this is the request body you want to parse.

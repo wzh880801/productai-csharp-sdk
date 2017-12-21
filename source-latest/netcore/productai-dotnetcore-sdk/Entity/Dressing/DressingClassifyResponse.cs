@@ -11,5 +11,8 @@ namespace MalongTech.ProductAI.API.Entity
 
         [JsonProperty("labels")]
         public string[] Labels { get; set; }
+
+        [JsonProperty("labels-en")]
+        public string[] LabelsEN { get; set; }
     }
 }

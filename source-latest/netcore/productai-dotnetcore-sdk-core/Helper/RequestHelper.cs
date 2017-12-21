@@ -93,7 +93,7 @@ namespace MalongTech.ProductAI.Core
             var request = CreateRequest(_request);
             try
             {
-                if (_request.RequestMethod == HttpMethod.POST)
+                if (_request.RequestMethod != HttpMethod.GET)
                 {
                     if (_request.QueryBytes == null || _request.QueryBytes.Length == 0)
                     {
@@ -169,7 +169,7 @@ namespace MalongTech.ProductAI.Core
             var request = CreateRequest(_request);
             try
             {
-                if (_request.RequestMethod == HttpMethod.POST)
+                if (_request.RequestMethod != HttpMethod.GET)
                 {
                     if (_request.QueryBytes == null || _request.QueryBytes.Length == 0)
                     {

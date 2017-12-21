@@ -50,6 +50,7 @@
     <Compile Include="Attribute\ServiceDescriptionAttribute.cs" />
     <Compile Include="Base\BaseRequest.cs" />
     <Compile Include="Base\BaseResponse.cs" />
+    <Compile Include="Base\ManagementAPIBaseRequest.cs" />
     <Compile Include="DefaultProfile.cs" />
     <Compile Include="DefaultProductAIClient.cs" />
     <Compile Include="Entity\AIService.cs" />
@@ -60,6 +61,8 @@
     <Compile Include="Enum\LanguageType.cs" />
     <Compile Include="Enum\ResponseType.cs" />
     <Compile Include="Enum\DetectType.cs" />
+    <Compile Include="Enum\SearchScenario.cs" />
+    <Compile Include="Enum\ServiceStatus.cs" />
     <Compile Include="Enum\ServiceType.cs" />
     <Compile Include="Exceptions\ClientException.cs" />
     <Compile Include="Exceptions\ServerException.cs" />

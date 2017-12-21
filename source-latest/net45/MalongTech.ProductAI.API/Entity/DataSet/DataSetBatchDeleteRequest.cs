@@ -7,7 +7,7 @@ namespace MalongTech.ProductAI.API.Entity
     /// <para>https://api-doc.productai.cn/doc/pai.html#从数据集删除多条数据</para>
     /// </summary>
     public class DataSetBatchDeleteRequest 
-        : DataSetBatchModifyByFileBaseRequest<DataSetModifyResponse>
+        : DataSetBatchModifyByFileBaseRequest<DataSetBaseResponse>
     {
         public DataSetBatchDeleteRequest(string imageSetId)
             : base(imageSetId, "urls_to_delete")

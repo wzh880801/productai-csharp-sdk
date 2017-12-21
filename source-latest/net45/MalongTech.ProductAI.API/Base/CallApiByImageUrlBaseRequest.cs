@@ -58,53 +58,53 @@ namespace MalongTech.ProductAI.API
             }
         }
 
-        public override string QueryString
-        {
-            get
-            {
-                var list = new List<string>();
-                var ps = this.GetType().GetProperties();
-                foreach (var p in ps)
-                {
-                    var ca = p.GetCustomAttribute(typeof(ParaSignAttribute));
-                    if (ca != null)
-                    {
-                        var _ca = ca as ParaSignAttribute;
-                        var value = p.GetValue(this);
-                        if (p.PropertyType == typeof(System.String))
-                        {
-                            if (value != null && !string.IsNullOrWhiteSpace(value.ToString()))
-                            {
-                                list.Add(string.Format("{0}={1}", _ca.Name, _ca.IsNeedUrlEncode ? WebQueryHelper.UrlEncode(value.ToString()) : value));
-                            }
-                        }
-                        else if (p.PropertyType == typeof(int?))
-                        {
-                            var v = value as int?;
-                            if (v != null)
-                                list.Add(string.Format("{0}={1}", _ca.Name, v));
-                        }
-                        else if (p.PropertyType == typeof(double?))
-                        {
-                            var v = value as double?;
-                            if (v != null)
-                                list.Add(string.Format("{0}={1}", _ca.Name, v));
-                        }
-                    }
-                }
+        //public override string QueryString
+        //{
+        //    get
+        //    {
+        //        var list = new List<string>();
+        //        var ps = this.GetType().GetProperties();
+        //        foreach (var p in ps)
+        //        {
+        //            var ca = p.GetCustomAttribute(typeof(ParaSignAttribute));
+        //            if (ca != null)
+        //            {
+        //                var _ca = ca as ParaSignAttribute;
+        //                var value = p.GetValue(this);
+        //                if (p.PropertyType == typeof(System.String))
+        //                {
+        //                    if (value != null && !string.IsNullOrWhiteSpace(value.ToString()))
+        //                    {
+        //                        list.Add(string.Format("{0}={1}", _ca.Name, _ca.IsNeedUrlEncode ? WebQueryHelper.UrlEncode(value.ToString()) : value));
+        //                    }
+        //                }
+        //                else if (p.PropertyType == typeof(int?))
+        //                {
+        //                    var v = value as int?;
+        //                    if (v != null)
+        //                        list.Add(string.Format("{0}={1}", _ca.Name, v));
+        //                }
+        //                else if (p.PropertyType == typeof(double?))
+        //                {
+        //                    var v = value as double?;
+        //                    if (v != null)
+        //                        list.Add(string.Format("{0}={1}", _ca.Name, v));
+        //                }
+        //            }
+        //        }
 
-                if (this.Options != null && this.Options.Count > 0)
-                {
-                    foreach(var para in this.Options)
-                    {
-                        list.Add(string.Format("{0}={1}", para.Key, WebQueryHelper.UrlEncode(para.Value)));
-                    }
-                }
+        //        if (this.Options != null && this.Options.Count > 0)
+        //        {
+        //            foreach(var para in this.Options)
+        //            {
+        //                list.Add(string.Format("{0}={1}", para.Key, WebQueryHelper.UrlEncode(para.Value)));
+        //            }
+        //        }
 
-                return string.Join("&", list);
-                //return string.Format("url={0}&loc={1}", System.Web.HttpUtility.UrlEncode(this.Url), this.Loc);
-            }
-        }
+        //        return string.Join("&", list);
+        //        //return string.Format("url={0}&loc={1}", System.Web.HttpUtility.UrlEncode(this.Url), this.Loc);
+        //    }
+        //}
 
         public CallApiByImageUrlBaseRequest()
         {

@@ -8,6 +8,15 @@ namespace MalongTech.ProductAI.Core
         GET,
 
         [EnumDescription(Text = "POST")]
-        POST
+        POST,
+
+        [EnumDescription(Text = "PUT")]
+        PUT,
+
+        [EnumDescription(Text = "PATCH")]
+        PATCH,
+
+        [EnumDescription(Text = "DELETE")]
+        DELETE
     }
 }

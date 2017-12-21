@@ -7,7 +7,7 @@ namespace MalongTech.ProductAI.API.Entity
     /// <para>https://api-doc.productai.cn/doc/pai.html#向数据集增加多条数据</para>
     /// </summary>
     public class DataSetBatchAddRequest 
-        : DataSetBatchModifyByFileBaseRequest<DataSetModifyResponse>
+        : DataSetBatchModifyByFileBaseRequest<DataSetBaseResponse>
     {
         public DataSetBatchAddRequest(string imageSetId)
             : base(imageSetId, "urls_to_add")
