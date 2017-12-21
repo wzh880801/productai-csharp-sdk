@@ -49,7 +49,7 @@ namespace MalongTech.ProductAI.API.Entity
         /// 最后修改UTC时间，精确到秒
         /// </summary>
         [JsonProperty("last_updated_at")]
-        public string last_updated_at { get; set; }
+        public string LastUpdatedTime { get; set; }
 
         /// <summary>
         /// 当前搜索服务线上索引量

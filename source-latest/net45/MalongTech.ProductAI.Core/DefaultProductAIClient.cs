@@ -99,51 +99,9 @@ namespace MalongTech.ProductAI.Core
 
                 dics.Add("x-ca-accesskeyid", _profile.AccessKeyId);
                 dics.Add("x-ca-version", _profile.Version);
-                dics.Add("x-ca-timestamp", string.Format("{0}", (long)(DateTime.Now.Subtract(new DateTime(1970, 1, 1, 0, 0, 0)).TotalSeconds)));
-                dics.Add("x-ca-signaturenonce", Guid.NewGuid().ToString("N"));
-                //dics.Add("requestmethod", "POST");
 
                 foreach (var dic in dics)
                     request.SetHeader(dic.Key, dic.Value);
-
-                //var properties = request.GetType().GetProperties();
-                //foreach (var p in properties)
-                //{
-                //    var ca = p.GetCustomAttribute(typeof(ParaSignAttribute));
-                //    if (ca != null)
-                //    {
-                //        var _ca = ca as ParaSignAttribute;
-                //        var value = p.GetValue(request);
-                //        if (p.PropertyType == typeof(System.String))
-                //        {
-                //            if (value != null && !string.IsNullOrWhiteSpace(value.ToString()))
-                //                dics.Add(_ca.Name, string.Format("{0}", value));
-                //        }
-                //        else if (p.PropertyType == typeof(int?))
-                //        {
-                //            var v = value as int?;
-                //            if (v != null)
-                //                dics.Add(_ca.Name, string.Format("{0}", value));
-                //        }
-                //        else if (p.PropertyType == typeof(double?))
-                //        {
-                //            var v = value as double?;
-                //            if (v != null)
-                //                dics.Add(_ca.Name, string.Format("{0}", value));
-                //        }
-                //    }
-                //}
-
-                //var ignoreParaAtt = request.GetType().GetCustomAttribute(typeof(IgnoreExtraParasAttribute));
-                //if (ignoreParaAtt == null && request.Options != null && request.Options.Count > 0)
-                //{
-                //    foreach (var para in request.Options)
-                //    {
-                //        dics.Add(para.Key, para.Value);
-                //    }
-                //}
-
-                //request.SetHeader("x-ca-signature", SignnatureHelper.Signnature(_profile.SecretKey, dics));
 
                 request.Host = this._host;
 

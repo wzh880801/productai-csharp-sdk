@@ -11,7 +11,8 @@ namespace MalongTech.ProductAI.API.Entity.Batch
     // get_services:    /batch/_1000001/services/
     // prepare          /batch/_1000001/task/prepare    { "service_id": service_id, "urls": file}
 
-    public class PrepareByFileRequest : Core.BaseRequest<PrepareByFileResponse>
+    // 先隐藏掉
+    internal class PrepareByFileRequest : Core.BaseRequest<PrepareByFileResponse>
     {
         public override string ApiUrl
         {
