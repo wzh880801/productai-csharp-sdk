@@ -33,11 +33,16 @@ namespace MalongTech.ProductAI.API.Entity
 
         private static Dictionary<int, string> _dics = typeof(Core.SearchScenario).ToDictionary();
 
+        private string _scenario = "";
+
         [Core.ParaSign("scenario")]
         public string ScenarioString
         {
             get
             {
+                if (!string.IsNullOrWhiteSpace(this._scenario))
+                    return _scenario;
+
                 return _dics[(int)this.Scenario];
             }
         }
@@ -60,6 +65,20 @@ namespace MalongTech.ProductAI.API.Entity
             this.DataSetId = imageSetId;
             this.Name = name;
             this.Scenario = scenario;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="imageSetId"></param>
+        /// <param name="name"></param>
+        /// <param name="scenarioName"></param>
+        public CreateSearchServiceRequest(string imageSetId, string name, string scenarioName)
+            : this()
+        {
+            this.DataSetId = imageSetId;
+            this.Name = name;
+            this._scenario = scenarioName;
         }
     }
 }

@@ -33,10 +33,12 @@ namespace MalongTech.ProductAI.Core
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="endpoint">Default is api.productai.cn, you can also use api-bj.productai.cn </param>
-        public DefaultProductAIClient(string endpoint = "api.productai.cn")
+        /// <param name="profile"></param>
+        /// <param name="endpoint">Default is api.productai.cn, you can also use api-bj.productai.cn</param>
+        public DefaultProductAIClient(IProfile profile, string endpoint = "api.productai.cn")
+            : this(profile)
         {
-
+            this._host = endpoint;
         }
 
         /// <summary>
