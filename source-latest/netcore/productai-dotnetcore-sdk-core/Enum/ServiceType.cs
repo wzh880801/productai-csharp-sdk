@@ -18,5 +18,8 @@ namespace MalongTech.ProductAI.Core
 
         [EnumDescription("color")]
         Color,
+
+        [EnumDescription("search")]
+        Search,
     }
 }

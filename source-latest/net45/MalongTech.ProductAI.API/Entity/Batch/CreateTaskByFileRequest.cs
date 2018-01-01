@@ -11,8 +11,7 @@ namespace MalongTech.ProductAI.API.Entity.Batch
     // get_services:    /batch/_1000001/services/
     // prepare          /batch/_1000001/task/prepare    { "service_id": service_id, "urls": file}
 
-    // 先隐藏掉
-    internal class PrepareByFileRequest : Core.BaseRequest<PrepareByFileResponse>
+    public class CreateTaskByFileRequest : Core.BaseRequest<CreateTaskByFileResponse>
     {
         public override string ApiUrl
         {
@@ -95,13 +94,13 @@ namespace MalongTech.ProductAI.API.Entity.Batch
         /// </summary>
         public FileInfo CsvFile { get; set; }
 
-        public PrepareByFileRequest()
+        public CreateTaskByFileRequest()
             : base()
         {
             this._boundary = FileHelper.GetBoundary();
         }
 
-        public PrepareByFileRequest(string serviceId, FileInfo csvFile)
+        public CreateTaskByFileRequest(string serviceId, FileInfo csvFile)
             : this()
         {
             this.ServiceId = serviceId;

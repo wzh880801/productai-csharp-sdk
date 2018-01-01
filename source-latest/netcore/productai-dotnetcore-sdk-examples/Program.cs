@@ -73,6 +73,19 @@ namespace MalongTech.ProductAI.Examples
             //IExample filter_by_url_example = new FilterByUrlExample();
             //filter_by_url_example.Run(client);
 
+            // Color API examples
+            // 色彩标注服务
+            IExample color_by_file_example = new ColorAnalysisByFileExample();
+            color_by_file_example.Run(client);
+
+            IExample color_by_url_example = new ColorAnalysisByUrlExample();
+            color_by_url_example.Run(client);
+
+            // Batch API examples
+            // 批处理API示例
+            IExample batch_example = new TasksExample();
+            batch_example.Run(client);
+
             Console.WriteLine("\r\nDone");
             Console.ReadLine();
         }

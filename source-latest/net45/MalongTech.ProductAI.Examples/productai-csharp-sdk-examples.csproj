@@ -45,14 +45,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="batch_tasks\TasksExample.cs" />
     <Compile Include="classify\ClassifyByUrlExample.cs" />
     <Compile Include="classify\ClassifyByFileExample.cs" />
+    <Compile Include="color\ColorAnalysisByFileExample.cs" />
+    <Compile Include="color\ColorAnalysisByUrlExample.cs" />
     <Compile Include="dataset\DataSetManagementExample.cs" />
     <Compile Include="dataset\DataSetSingleAddExample.cs" />
     <Compile Include="dataset\DataSetBatchDeleteFilesExample.cs" />
     <Compile Include="dataset\DataSetBatchAddFilesExample.cs" />
     <Compile Include="detect\DetectByUrlExample.cs" />
     <Compile Include="detect\DetectByFileExample.cs" />
+    <Compile Include="dressing\DressingClassifyByFileExample.cs" />
+    <Compile Include="dressing\DressingClassifyByUrlExample.cs" />
     <Compile Include="filter\FilterByUrlExample.cs" />
     <Compile Include="IExample.cs" />
     <Compile Include="search\ImageSearchByUrlExample.cs" />
@@ -65,6 +70,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="batch_tasks\urls-001.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="dataset\example.csv">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -84,7 +92,13 @@
     <Content Include="classify\f10.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="color\f10.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="detect\iphone.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="dressing\f10.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

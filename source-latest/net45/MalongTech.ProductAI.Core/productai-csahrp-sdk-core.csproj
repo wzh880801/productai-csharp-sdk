@@ -64,6 +64,8 @@
     <Compile Include="Enum\SearchScenario.cs" />
     <Compile Include="Enum\ServiceStatus.cs" />
     <Compile Include="Enum\ServiceType.cs" />
+    <Compile Include="Enum\SubType.cs" />
+    <Compile Include="Enum\TaskStatus.cs" />
     <Compile Include="Exceptions\ClientException.cs" />
     <Compile Include="Exceptions\ServerException.cs" />
     <Compile Include="Helper\EnumHelper.cs" />

@@ -16,7 +16,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="batch_tasks\urls-001.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="classify\f10.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="color\f10.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="dataset\example.csv">

@@ -2,8 +2,7 @@
 
 namespace MalongTech.ProductAI.API.Entity.Batch
 {
-    // 先隐藏掉
-    internal class PrepareByFileResponse : Core.BaseResponse
+    public class StartTaskResponse : CreateTaskByFileResponse
     {
 
     }
