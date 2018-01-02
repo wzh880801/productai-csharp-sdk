@@ -5,7 +5,7 @@ using MalongTech.ProductAI.Core;
 namespace MalongTech.ProductAI.API.Entity.Color
 {
     public class ColorClassifyByImageUrlRequest
-        : CallApiByImageUrlBaseRequest<DressingClassifyResponse>
+        : CallApiByImageUrlBaseRequest<ColorAnalysisResponse>
     {
         public ColorClassifyByImageUrlRequest(string loc = "0-0-1-1")
             : base("color", "_0000072", loc)
