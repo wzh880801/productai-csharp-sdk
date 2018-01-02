@@ -1,4 +1,4 @@
-﻿# ProductAI® SDK for .NET & .NET Core
+# ProductAI® SDK for .NET & .NET Core
 
 [![Build status](https://ci.appveyor.com/api/projects/status/34b787k7hrbk59q6/branch/master?svg=true)](https://ci.appveyor.com/project/wzh880801/productai-csharp-sdk/branch/master)
 [![NuGet](https://img.shields.io/nuget/v/MalongTech.ProductAI.API.svg)](https://www.nuget.org/packages/MalongTech.ProductAI.API/)
@@ -18,73 +18,108 @@ Nuget Command-Line:
 ```
 Install-Package MalongTech.ProductAI.API
 ```
+
+# Requirements & dependencies
+## .NET45
+ - .NET Framework 4.5+
+ - Newtonsoft.Json
+## NET CORE
+- .NET Core or .NET Standard 1.0+
+- Newtonsoft.Json
+
 ## Example code
+[See Example Codes](https://github.com/MalongTech/productai-csharp-sdk/blob/master/source-latest/net45/MalongTech.ProductAI.Examples/Program.cs)
+
 ```C#
 using System;
+using System.Configuration;
 using MalongTech.ProductAI.Core;
-using MalongTech.ProductAI.API.Entity;
 
 namespace MalongTech.ProductAI.Examples
 {
-    class Useage
+    class Program
     {
-        void FullFlowExample()
+        static void Main(string[] args)
         {
-            // step 1 - setup your account profile
-            // get your accessKeyId & secretKey at https://console.productai.cn/main#/21/service_category_id=1
             IProfile profile = new DefaultProfile
             {
                 Version = "1",
-                AccessKeyId = "XXXXXXXXXXXXXXXXXXXXX",
-                SecretKey = "XXXXXXXXXXXXXXXXXXXXX",
-
-                // set this property = null if you want to control the language type of each request
+                AccessKeyId = ConfigurationManager.AppSettings["AccessKeyId"],
+                SecretKey = ConfigurationManager.AppSettings["SecretKey"],
                 GlobalLanguage = LanguageType.Chinese
             };
-
-            // step 2 - initialize your ProductAI client
             var client = new DefaultProductAIClient(profile);
 
-            // step 3 - build your request
-            // take image search as example
-            var request = new ImageSearchByImageUrlRequest("<your service id>")
-            {
-                Url = "http://productai.cn/img/f10.jpg",
+            // Image search
+            // 图片搜索调用示例
+            IExample search_by_file_example = new ImageSearchByFileExample();
+            search_by_file_example.Run(client);
 
-                // this value will be override because you had set the IProfile.GlobalLanguage = LanguageType.Chinese
-                Language = LanguageType.English
+            IExample search_by_url_example = new ImageSearchByUrlExample();
+            search_by_url_example.Run(client);
+
+            // Detect
+            // 图像检测调用示例
+            IExample detect_by_file_example = new DetectByFileExample();
+            detect_by_file_example.Run(client);
+
+            IExample detect_by_url_example = new DetectByUrlExample();
+            detect_by_url_example.Run(client);
+
+            // Classify
+            // 图像分析调用示例
+            IExample classify_by_file_example = new ClassifyByFileExample();
+            classify_by_file_example.Run(client);
+
+            IExample classify_by_url_example = new ClassifyByUrlExample();
+            classify_by_url_example.Run(client);
+
+            // Dataset
+            // 数据集操作调用示例
+            IExample dataset_batch_add_example = new DataSetBatchAddFilesExample();
+            dataset_batch_add_example.Run(client);
+
+            IExample dataset_batch_delete_example = new DataSetBatchDeleteFilesExample();
+            dataset_batch_delete_example.Run(client);
+
+            IExample dataset_single_add_example = new DataSetSingleAddExample();
+            dataset_single_add_example.Run(client);
+
+            // Dataset management API examples
+            // 数据集管理（增删改查）API示例
+            IExample dataset_management_example = new DataSetManagementExample();
+            dataset_management_example.Run(client);
+
+            // Search service management API examples
+            // 搜索服务管理（增删改查）API示例
+            IExample service_management_example = new ServiceManagementExample
+            {
+                DataSetId = "mhxy687b", //your dataset_id 您的数据集ID
             };
+            service_management_example.Run(client);
 
-            //step 4 - send out the request、receive the response、catch the exceptions
-            try
-            {
-                var response = client.GetResponse(request);
+            ////Smart filter
+            //IExample filter_by_file_example = new FilterByFileExample();
+            //filter_by_file_example.Run(client);
 
-                Console.WriteLine("==========================Result==========================");
-                // access the reponse directly
-                foreach (var r in response.Results)
-                {
-                    Console.WriteLine("{0}\t\t{1}", r.Url, r.Score);
-                }
-                Console.WriteLine("==========================Result==========================");
-            }
-            catch (ServerException ex)
-            {
-                Console.WriteLine("ServerException happened: \r\n\tErrorCode: {0}\r\n\tErrorMessage: {1}",
-                    ex.ErrorCode,
-                    ex.ErrorMessage);
-            }
-            catch (ClientException ex)
-            {
-                Console.WriteLine("ClientException happened: \r\n\tRequestId: {0}\r\n\tErrorCode:\r\n\t{1}\r\n\tErrorMessage: {2}",
-                    ex.RequestId,
-                    ex.ErrorCode,
-                    ex.ErrorMessage);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Unknown Exception happened: {0}\r\n{1}", ex.Message, ex.StackTrace);
-            }
+            //IExample filter_by_url_example = new FilterByUrlExample();
+            //filter_by_url_example.Run(client);
+
+            // Color API examples
+            // 色彩标注服务
+            IExample color_by_file_example = new ColorAnalysisByFileExample();
+            color_by_file_example.Run(client);
+
+            IExample color_by_url_example = new ColorAnalysisByUrlExample();
+            color_by_url_example.Run(client);
+
+            // Batch API examples
+            // 批处理API示例
+            IExample batch_example = new TasksExample();
+            batch_example.Run(client);
+
+            Console.WriteLine("\r\nDone");
+            Console.ReadLine();
         }
     }
 }
@@ -101,10 +136,17 @@ var request = new DetectByImageFileRequest(DetectType.ThreeCAndElectronics)
 var response = await client.GetResponseAsync(request);
 ```
 
-# Examples （示例）
-See project MalongTech.ProductAI.Examples. (请参考工程MalongTech.ProductAI.Examples)
-
 # Release Notes（更新日志）
+## 2018-01-02
+ - Batch Apis (数任务管理Api)
+ [Batch Api Example](https://github.com/MalongTech/productai-csharp-sdk/tree/master/source-latest/net45/MalongTech.ProductAI.Examples/batch_tasks)
+
+ - Color Apis （色彩标注服务Api）
+ [Color Api Example](https://github.com/MalongTech/productai-csharp-sdk/tree/master/source-latest/net45/MalongTech.ProductAI.Examples/color)
+
+ - Dressing Api Examples（时尚分析示例）
+ [Dressing Api Examples](https://github.com/MalongTech/productai-csharp-sdk/tree/master/source-latest/net45/MalongTech.ProductAI.Examples/dressing)
+
 ## 2017-12-21
  - Dataset Management Apis (数据集管理Api)
  - Search Service Management Apis （搜索服务管理Api）
