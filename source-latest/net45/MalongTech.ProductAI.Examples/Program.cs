@@ -17,6 +17,13 @@ namespace MalongTech.ProductAI.Examples
             };
             var client = new DefaultProductAIClient(profile);
 
+            //Dressing
+            IExample dressing_by_file_example = new DressingClassifyByFileExample();
+            dressing_by_file_example.Run(client);
+
+            IExample dressing_by_url_example = new DressingClassifyByUrlExample();
+            dressing_by_url_example.Run(client);
+
             // Image search
             // 图片搜索调用示例
             IExample search_by_file_example = new ImageSearchByFileExample();
