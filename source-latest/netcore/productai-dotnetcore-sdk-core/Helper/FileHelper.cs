@@ -19,6 +19,19 @@ namespace MalongTech.ProductAI.Core
 
         public static byte[] GetMultipartBytes(FileInfo file, string boundary, Dictionary<string, string> options, string paraName = "search")
         {
+            if (file == null || !file.Exists)
+                throw new FileNotFoundException("The image file you specified does not exists.");
+
+            byte[] fileBytes = null;
+            try
+            {
+                fileBytes = File.ReadAllBytes(file.FullName);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(string.Format("Can not read file {0}, make sure you have the permission.", file.FullName), ex);
+            }
+
             var bytes = new List<byte>();
             bytes.AddRange(BoundaryBytes(boundary));
             if (options != null && options.Count > 0)
@@ -27,7 +40,7 @@ namespace MalongTech.ProductAI.Core
                     bytes.AddRange(FieldBytes(opt.Key, opt.Value, boundary));
             }
             bytes.AddRange(FileHeaders(file, paraName));
-            bytes.AddRange(File.ReadAllBytes(file.FullName));
+            bytes.AddRange(fileBytes);
             bytes.AddRange(TailBytes(boundary));
             return bytes.ToArray();
         }
