@@ -66,6 +66,8 @@
     <Compile Include="Entity\Color\ColorAnalysisResponse.cs" />
     <Compile Include="Entity\DataSet\DeleteDataSetRequest.cs" />
     <Compile Include="Entity\DataSet\DeleteDataSetResponse.cs" />
+    <Compile Include="Entity\DataSet\GetAllDataSetsResponse.cs" />
+    <Compile Include="Entity\DataSet\GetAllDataSetsRequest.cs" />
     <Compile Include="Entity\DataSet\UpdateDataSetRequest.cs" />
     <Compile Include="Entity\DataSet\UpdateDataSetResponse.cs" />
     <Compile Include="Entity\DataSet\GetDataSetInfoResponse.cs" />
@@ -92,7 +94,9 @@
     <Compile Include="Entity\Service\CreateSearchServiceResponse.cs" />
     <Compile Include="Entity\Service\DeleteServiceRequest.cs" />
     <Compile Include="Entity\Service\DeleteServiceResponse.cs" />
+    <Compile Include="Entity\Service\GetAllServicesRequest.cs" />
     <Compile Include="Entity\Service\GetServiceInfoRequest.cs" />
+    <Compile Include="Entity\Service\GetAllServicesResponse.cs" />
     <Compile Include="Entity\Service\GetServiceInfoResponse.cs" />
     <Compile Include="Entity\Service\UpdateServiceRequest.cs" />
     <Compile Include="Entity\Service\UpdateServiceResponse.cs" />

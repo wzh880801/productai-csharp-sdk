@@ -14,6 +14,9 @@ namespace MalongTech.ProductAI.Examples
         {
             Console.WriteLine("==>  Demo - 数据集操作  <==");
 
+            Console.WriteLine("==>  Demo - 获取所有数据集  <==");
+            GetAll(client);
+
             Console.WriteLine("==>  Demo - 新增  <==");
             Add(client);
 
@@ -152,6 +155,39 @@ namespace MalongTech.ProductAI.Examples
             {
                 DataSetId = _dataSetId
             };
+
+            try
+            {
+                var response = client.GetResponse(request);
+
+                Console.WriteLine("==========================Result==========================");
+                Console.WriteLine("Response: \r\n{0}", response.ResponseJsonString);
+                Console.WriteLine("==========================Result==========================");
+            }
+            catch (ServerException ex)
+            {
+                Console.WriteLine("ServerException happened: \r\n\tErrorCode: {0}\r\n\tErrorMessage: {1}",
+                    ex.ErrorCode,
+                    ex.ErrorMessage);
+            }
+            catch (ClientException ex)
+            {
+                Console.WriteLine("ClientException happened: \r\n\tRequestId: {0}\r\n\tErrorCode: {1}\r\n\tErrorMessage: {2}",
+                    ex.RequestId,
+                    ex.ErrorCode,
+                    ex.ErrorMessage);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Unknown Exception happened: {0}\r\n{1}", ex.Message, ex.StackTrace);
+            }
+        }
+
+        // get all datasets
+        // 获取所有的数据集
+        private void GetAll (IWebClient client)
+        {
+            var request = new GetAllDataSetsRequest();
 
             try
             {
