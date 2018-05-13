@@ -15,7 +15,7 @@ namespace MalongTech.ProductAI.Examples
             Console.WriteLine("==>  Demo - 场景分析与标注  <==");
             Console.WriteLine("See https://api-doc.productai.cn/doc/pai.html#场景分析与标注 for details.\r\n");
 
-            var request = new ClassifyByImageFileRequest(ClassifyType.Place)
+            var request = new ClassifyByImageFileRequest("classify", "_0000039")
             {
                 ImageFile = new System.IO.FileInfo(@".\classify\f10.jpg"),
                 Language = LanguageType.Chinese

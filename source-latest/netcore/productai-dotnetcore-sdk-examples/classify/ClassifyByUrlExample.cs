@@ -15,7 +15,7 @@ namespace MalongTech.ProductAI.Examples
             Console.WriteLine("==>  Demo - 场景分析与标注  <==");
             Console.WriteLine("See https://api-doc.productai.cn/doc/pai.html#场景分析与标注 for details.\r\n");
 
-            var request = new ClassifyByImageUrlRequest(ClassifyType.Place)
+            var request = new ClassifyByImageUrlRequest("classify", "_0000039")
             {
                 Url = "http://static.esobing.com/images/pai/1.jpg",
                 Language = LanguageType.Chinese

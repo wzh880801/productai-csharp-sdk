@@ -58,13 +58,11 @@
     <Compile Include="detect\DetectByFileExample.cs" />
     <Compile Include="dressing\DressingClassifyByFileExample.cs" />
     <Compile Include="dressing\DressingClassifyByUrlExample.cs" />
-    <Compile Include="filter\FilterByUrlExample.cs" />
     <Compile Include="IExample.cs" />
     <Compile Include="search\ImageSearchByUrlExample.cs" />
     <Compile Include="search\ImageSearchByFileExample.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="filter\FilterByFileExample.cs" />
     <Compile Include="service\ServiceManagementExample.cs" />
     <Compile Include="Useage.cs" />
   </ItemGroup>
@@ -95,9 +93,9 @@
     <Content Include="color\f10.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="detect\iphone.jpg">
+    <None Include="detect\bed.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    </None>
     <Content Include="dressing\f10.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

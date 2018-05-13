@@ -55,15 +55,12 @@
     <Compile Include="DefaultProductAIClient.cs" />
     <Compile Include="Entity\AIService.cs" />
     <Compile Include="Entity\SearchTag.cs" />
-    <Compile Include="Enum\ClassifyType.cs" />
     <Compile Include="Enum\ContentType.cs" />
     <Compile Include="Enum\HttpMethod.cs" />
     <Compile Include="Enum\LanguageType.cs" />
     <Compile Include="Enum\ResponseType.cs" />
-    <Compile Include="Enum\DetectType.cs" />
     <Compile Include="Enum\SearchScenario.cs" />
     <Compile Include="Enum\ServiceStatus.cs" />
-    <Compile Include="Enum\ServiceType.cs" />
     <Compile Include="Enum\SubType.cs" />
     <Compile Include="Enum\TaskStatus.cs" />
     <Compile Include="Exceptions\ClientException.cs" />

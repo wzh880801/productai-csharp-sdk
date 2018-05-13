@@ -28,7 +28,7 @@
     <None Update="dataset\example.csv">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="detect\iphone.jpg">
+    <None Update="detect\bed.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>

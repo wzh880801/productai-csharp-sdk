@@ -6,18 +6,17 @@ namespace MalongTech.ProductAI.Examples
 {
     /// <summary>
     /// 3C电器检测与定位
-    /// https://api-doc.productai.cn/doc/pai.html#3C电器检测与定位
     /// </summary>
     class DetectByUrlExample : IExample
     {
         public void Run(IWebClient client)
         {
-            Console.WriteLine("==>  Demo - 3C电器检测与定位  <==");
-            Console.WriteLine("See https://api-doc.productai.cn/doc/pai.html#3C电器检测与定位 for details.\r\n");
+            Console.WriteLine("==>  Demo - 家具检测与定位  <==");
+            Console.WriteLine("See https://developers.productai.cn/zh/reference/detect#%E6%9C%8D%E8%A3%85%E6%A3%80%E6%B5%8B%E4%B8%8E%E5%AE%9A%E4%BD%8D-v2-0 for details.\r\n");
 
-            var request = new DetectByImageUrlRequest(DetectType.ThreeCAndElectronics)
+            var request = new DetectByImageUrlRequest("detect", "_0000171")
             {
-                Url = "http://static.esobing.com/images/iphone.jpg",
+                Url = "http://cdn.malong.com/users/zhowang/Bed/0004a56f-bbaf-46ac-ad66-8bbe9153e7c8.jpg",
                 Language = LanguageType.Chinese
             };
 

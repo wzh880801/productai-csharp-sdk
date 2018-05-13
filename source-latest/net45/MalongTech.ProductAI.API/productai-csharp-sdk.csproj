@@ -43,10 +43,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Base\CallApiByImageStreamBaseRequest.cs" />
     <Compile Include="Base\CallApiByImageFileBaseRequest.cs" />
     <Compile Include="Base\CallApiByImageUrlBaseRequest.cs" />
     <Compile Include="Base\DataSetBatchModifyByFileBaseRequest.cs" />
     <Compile Include="Base\DataSetSingleModifyByUrlBaseRequest.cs" />
+    <Compile Include="Base\SearchByImageStreamBaseRequest.cs" />
     <Compile Include="Base\SearchByImageFileBaseRequest.cs.cs" />
     <Compile Include="Base\SearchByImageUrlBaseRequest.cs" />
     <Compile Include="Entity\Batch\SearchTaskRequest.cs" />
@@ -61,6 +63,8 @@
     <Compile Include="Entity\Batch\StartTaskRequest.cs" />
     <Compile Include="Entity\Batch\CancelTaskResponse.cs" />
     <Compile Include="Entity\Batch\StartTaskResponse.cs" />
+    <Compile Include="Entity\Classify\ClassifyByImageStreamRequest.cs" />
+    <Compile Include="Entity\Color\ColorClassifyByImageStreamRequest.cs" />
     <Compile Include="Entity\Color\ColorClassifyByImageFileRequest.cs" />
     <Compile Include="Entity\Color\ColorClassifyByImageUrlRequest.cs" />
     <Compile Include="Entity\Color\ColorAnalysisResponse.cs" />
@@ -74,6 +78,8 @@
     <Compile Include="Entity\DataSet\GetDataSetInfoRequest.cs" />
     <Compile Include="Entity\DataSet\CreateDataSetRequest.cs" />
     <Compile Include="Entity\DataSet\CreateDataSetResponse.cs" />
+    <Compile Include="Entity\Detect\DetectByImageStreamRequest.cs" />
+    <Compile Include="Entity\Dressing\DressingClassifyByImageStreamRequest.cs" />
     <Compile Include="Entity\Dressing\DressingClassifyResponse.cs" />
     <Compile Include="Entity\Classify\ClassifyByImageFileRequest.cs" />
     <Compile Include="Entity\Dressing\DressingClassifyByImageFileRequest.cs" />
@@ -87,6 +93,7 @@
     <Compile Include="Entity\Detect\DetectByImageFileRequest.cs" />
     <Compile Include="Entity\Detect\DetectByImageUrlRequest.cs" />
     <Compile Include="Entity\Detect\DetectResponse.cs" />
+    <Compile Include="Entity\ImageSearch\ImageSearchByImageStreamRequest.cs" />
     <Compile Include="Entity\ImageSearch\ImageSearchByImageFileRequest.cs" />
     <Compile Include="Entity\ImageSearch\ImageSearchByImageUrlRequest.cs" />
     <Compile Include="Entity\ImageSearch\ImageSearchResponse.cs" />
@@ -100,14 +107,10 @@
     <Compile Include="Entity\Service\GetServiceInfoResponse.cs" />
     <Compile Include="Entity\Service\UpdateServiceRequest.cs" />
     <Compile Include="Entity\Service\UpdateServiceResponse.cs" />
-    <Compile Include="Entity\SmartFilter\IntelligentFilterByImageFileRequest.cs" />
-    <Compile Include="Entity\SmartFilter\IntelligentFilterByImageUrlRequest.cs" />
-    <Compile Include="Entity\SmartFilter\IntelligentFilterResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ResponseResultEntity\DetectResult.cs" />
     <Compile Include="ResponseResultEntity\DressingClassifyResult.cs" />
     <Compile Include="ResponseResultEntity\ClassifyResult.cs" />
-    <Compile Include="ResponseResultEntity\IntelligentFilterResult.cs" />
     <Compile Include="ResponseResultEntity\SearchResult.cs" />
   </ItemGroup>
   <ItemGroup>

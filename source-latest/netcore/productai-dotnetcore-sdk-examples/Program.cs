@@ -73,13 +73,6 @@ namespace MalongTech.ProductAI.Examples
             };
             service_management_example.Run(client);
 
-            ////Smart filter
-            //IExample filter_by_file_example = new FilterByFileExample();
-            //filter_by_file_example.Run(client);
-
-            //IExample filter_by_url_example = new FilterByUrlExample();
-            //filter_by_url_example.Run(client);
-
             // Color API examples
             // 色彩标注服务
             IExample color_by_file_example = new ColorAnalysisByFileExample();

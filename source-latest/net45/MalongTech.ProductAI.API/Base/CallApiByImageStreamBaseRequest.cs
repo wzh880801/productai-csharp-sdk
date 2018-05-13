@@ -11,7 +11,7 @@ namespace MalongTech.ProductAI.API
     /// You can't directly initilaze this class, instead, you should the subclass of it.
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public abstract class CallApiByImageFileBaseRequest<T> : BaseRequest<T>
+    public abstract class CallApiByImageStreamBaseRequest<T> : BaseRequest<T>
         where T : BaseResponse
     {
         private string _serviceType = "";
@@ -96,13 +96,13 @@ namespace MalongTech.ProductAI.API
 
                 if (this.Options != null && this.Options.Count > 0)
                 {
-                    foreach(var para in this.Options)
+                    foreach (var para in this.Options)
                     {
                         options.Add(para.Key, para.Value);
                     }
                 }
 
-                return FileHelper.GetMultipartBytes(this.ImageFile, _boundary, options, "search");
+                return FileHelper.GetMultipartBytes(this.ImageStream, _boundary, options, "search");
             }
         }
 
@@ -120,9 +120,9 @@ namespace MalongTech.ProductAI.API
         /// <summary>
         /// The image file
         /// </summary>
-        public FileInfo ImageFile { get; set; }
+        public Stream ImageStream { get; set; }
 
-        public CallApiByImageFileBaseRequest()
+        public CallApiByImageStreamBaseRequest()
         {
             this._boundary = FileHelper.GetBoundary();
         }
@@ -132,7 +132,7 @@ namespace MalongTech.ProductAI.API
         /// </summary>
         /// <param name="serviceType">the service type</param>
         /// <param name="serviceId">the service id</param>
-        public CallApiByImageFileBaseRequest(string serviceType, string serviceId)
+        public CallApiByImageStreamBaseRequest(string serviceType, string serviceId)
         : this()
         {
             if (string.IsNullOrWhiteSpace(serviceType))
@@ -150,7 +150,7 @@ namespace MalongTech.ProductAI.API
         /// <param name="serviceType">the service type</param>
         /// <param name="serviceId">the service id</param>
         /// <param name="loc">default is "0-0-1-1"</param>
-        public CallApiByImageFileBaseRequest(string serviceType, string serviceId, string loc = "0-0-1-1")
+        public CallApiByImageStreamBaseRequest(string serviceType, string serviceId, string loc = "0-0-1-1")
                 : this(serviceType, serviceId)
         {
             this.Loc = loc;
@@ -161,12 +161,12 @@ namespace MalongTech.ProductAI.API
         /// </summary>
         /// <param name="serviceType">the service type</param>
         /// <param name="serviceId">the service id</param>
-        /// <param name="imageFile">the local image file</param>
+        /// <param name="imageStream">the image stream/param>
         /// <param name="loc">default is "0-0-1-1"</param>
-        public CallApiByImageFileBaseRequest(string serviceType, string serviceId, FileInfo imageFile, string loc = "0-0-1-1")
+        public CallApiByImageStreamBaseRequest(string serviceType, string serviceId, Stream imageStream, string loc = "0-0-1-1")
                 : this(serviceType, serviceId, loc)
         {
-            this.ImageFile = imageFile;
+            this.ImageStream = imageStream;
         }
     }
 }
