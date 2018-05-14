@@ -56,7 +56,6 @@ namespace MalongTech.ProductAI.Core
             {
                 imageStream.Read(fileBytes, 0, fileBytes.Length);
                 imageStream.Seek(0, SeekOrigin.Begin);
-                imageStream.Dispose();
             }
             catch (Exception ex)
             {

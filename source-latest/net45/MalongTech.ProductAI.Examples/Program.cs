@@ -24,6 +24,9 @@ namespace MalongTech.ProductAI.Examples
             IExample dressing_by_url_example = new DressingClassifyByUrlExample();
             dressing_by_url_example.Run(client);
 
+            IExample dressing_by_file_stream_example = new DressingClassifyByFileStreamExample();
+            dressing_by_file_stream_example.Run(client);
+
             // Image search
             // 图片搜索调用示例
             IExample search_by_file_example = new ImageSearchByFileExample();
@@ -31,6 +34,9 @@ namespace MalongTech.ProductAI.Examples
 
             IExample search_by_url_example = new ImageSearchByUrlExample();
             search_by_url_example.Run(client);
+
+            IExample search_by_file_stream_example = new ImageSearchByFileStreamExample();
+            search_by_file_stream_example.Run(client);
 
             // Detect
             // 图像检测调用示例
@@ -40,6 +46,9 @@ namespace MalongTech.ProductAI.Examples
             IExample detect_by_url_example = new DetectByUrlExample();
             detect_by_url_example.Run(client);
 
+            IExample detect_by_file_stream_example = new DetectByFileStreamExample();
+            detect_by_file_stream_example.Run(client);
+
             // Classify
             // 图像分析调用示例
             IExample classify_by_file_example = new ClassifyByFileExample();
@@ -47,6 +56,9 @@ namespace MalongTech.ProductAI.Examples
 
             IExample classify_by_url_example = new ClassifyByUrlExample();
             classify_by_url_example.Run(client);
+
+            IExample classify_by_file_stream_example = new ClassifyByFileStreamExample();
+            classify_by_file_stream_example.Run(client);
 
             // Dataset
             // 数据集操作调用示例
@@ -80,10 +92,13 @@ namespace MalongTech.ProductAI.Examples
             IExample color_by_url_example = new ColorAnalysisByUrlExample();
             color_by_url_example.Run(client);
 
+            IExample color_by_file_stream_example = new ColorAnalysisByFileStreamExample();
+            color_by_file_stream_example.Run(client);
+
             // Batch API examples
             // 批处理API示例
-            IExample batch_example = new TasksExample();
-            batch_example.Run(client);
+            //IExample batch_example = new TasksExample();
+            //batch_example.Run(client);
 
             Console.WriteLine("\r\nDone");
             Console.ReadLine();

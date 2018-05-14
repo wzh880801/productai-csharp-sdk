@@ -46,19 +46,24 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="batch_tasks\TasksExample.cs" />
+    <Compile Include="classify\ClassifyByFileStreamExample.cs" />
     <Compile Include="classify\ClassifyByUrlExample.cs" />
     <Compile Include="classify\ClassifyByFileExample.cs" />
+    <Compile Include="color\ColorAnalysisByFileStreamExample.cs" />
     <Compile Include="color\ColorAnalysisByFileExample.cs" />
     <Compile Include="color\ColorAnalysisByUrlExample.cs" />
     <Compile Include="dataset\DataSetManagementExample.cs" />
     <Compile Include="dataset\DataSetSingleAddExample.cs" />
     <Compile Include="dataset\DataSetBatchDeleteFilesExample.cs" />
     <Compile Include="dataset\DataSetBatchAddFilesExample.cs" />
+    <Compile Include="detect\DetectByFileStreamExample.cs" />
     <Compile Include="detect\DetectByUrlExample.cs" />
     <Compile Include="detect\DetectByFileExample.cs" />
+    <Compile Include="dressing\DressingClassifyByFileStreamExample.cs" />
     <Compile Include="dressing\DressingClassifyByFileExample.cs" />
     <Compile Include="dressing\DressingClassifyByUrlExample.cs" />
     <Compile Include="IExample.cs" />
+    <Compile Include="search\ImageSearchByFileStreamExample.cs" />
     <Compile Include="search\ImageSearchByUrlExample.cs" />
     <Compile Include="search\ImageSearchByFileExample.cs" />
     <Compile Include="Program.cs" />
