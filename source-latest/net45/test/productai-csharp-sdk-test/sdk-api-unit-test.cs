@@ -27,7 +27,7 @@ namespace MalongTech.ProductAI.Test
         [TestMethod]
         public void ClassifyTest()
         {
-            var request = new ClassifyByImageUrlRequest(ClassifyType.Pornography);
+            var request = new ClassifyByImageUrlRequest("classify", "_0000072");
             try
             {
                 var response = client.GetResponse(request);

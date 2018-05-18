@@ -9,21 +9,6 @@ namespace MalongTech.ProductAI.Test
     public class SDKCoreUnitTest
     {
         [TestMethod]
-        public void EnumHelperTest()
-        {
-            var dicts = typeof(ClassifyType).ToServiceDictionary();
-            Assert.AreEqual(3, dicts.Keys.Count);
-            Assert.AreEqual("_0000024", dicts[(int)ClassifyType.Pornography].ServiceId);
-
-            var detectDicts = typeof(DetectType).ToServiceDictionary();
-            Assert.AreEqual(7, detectDicts.Keys.Count);
-            Assert.AreEqual("detect", detectDicts[(int)DetectType.Vehicle].ServiceType);
-
-            var langDicts = typeof(LanguageType).ToDictionary();
-            Assert.AreEqual("zh-Hans-CN", langDicts[(int)LanguageType.Chinese]);
-        }
-
-        [TestMethod]
         public void SignatureTest()
         {
             var secretKey = "1234567";

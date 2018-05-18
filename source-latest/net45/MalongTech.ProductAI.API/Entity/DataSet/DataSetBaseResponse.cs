@@ -16,7 +16,7 @@ namespace MalongTech.ProductAI.API.Entity
         /// 数据集中下载完毕的图片数
         /// </summary>
         [JsonProperty("n_downloaded")]
-        public int DownloaedCount { get; set; }
+        public int DownloadedCount { get; set; }
 
         [JsonProperty("description")]
         public string Description { get; set; }
